@@ -1,39 +1,37 @@
 import React from "react";
-import { AiOutlineSearch, AiOutlineShoppingCart } from "react-icons/ai";
-import { VscAccount } from "react-icons/vsc";
+import { AiOutlineSearch } from "react-icons/ai";
+import { CgProfile } from "react-icons/cg";
+import { FaShoppingCart } from "react-icons/fa";
+import logo from "../../images/hello_food.png";
 import "./Navbar.css";
 
 const Navbar = () => {
   return (
-    <div className="container">
-      <div>
-        <img
-          src="https://w7.pngwing.com/pngs/512/403/png-transparent-demo-app-google-play-android-b-blue-text-logo.png"
+    <div className="H_container">
+      <div className="H_logo">
+        <img className="nav_logo"
+          src={logo}
           alt=""
         />
       </div>
 
-      <div className="search">
+      <form className="H_search">
+        <span className="icon_search"><AiOutlineSearch/></span>
         <input type="text" placeholder="Search here" />
-        {}
-        <button>
-          <AiOutlineSearch />
-        </button>
-      </div>
+        <button>Search</button>
+      </form>
 
-      <div>
+      <div className="H_link">
         <a href="#cart">
-          <span>
-            <AiOutlineShoppingCart className="icon" />
+          <span className="icon" >
+            <FaShoppingCart></FaShoppingCart>
+            
           </span>
-          Cart
+          <p>Cart</p>
         </a>
-
-        <a href="#account">
-          <span>
-            <VscAccount className="icon" />
-          </span>
-          Account
+        <a href="#account" >
+          <span className="icon"> <CgProfile/></span>
+          <p>Account</p>
         </a>
       </div>
     </div>
