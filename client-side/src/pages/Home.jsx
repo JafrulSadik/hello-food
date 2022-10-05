@@ -1,8 +1,16 @@
 import React from "react";
-import Navbar from "../components/Navbar/Navbar";
+import MobileMenu from "../components/MobileMenu";
+import Navbar from "../components/Navbar";
+import './Home.css';
 
 const Home = () => {
-  return <Navbar></Navbar>;
+  return (
+    <div>
+      <Navbar></Navbar>
+      <MobileMenu/>
+    </div>
+  );
+
 };
 
 export default Home;
