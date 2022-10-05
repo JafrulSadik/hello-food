@@ -1,9 +1,14 @@
 import React from "react";
-import Navbar from "../components/Navbar/Navbar";
+import Navbar from "../components/Navbar";
 import './Home.css';
 
 const Home = () => {
-  return <Navbar></Navbar>;
+  return (
+    <div>
+      <Navbar></Navbar>
+    </div>
+  );
+
 };
 
 export default Home;
