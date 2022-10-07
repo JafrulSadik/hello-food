@@ -2,7 +2,7 @@ import React from 'react';
 import { AiOutlineShoppingCart } from 'react-icons/ai';
 import styled from 'styled-components';
 
-const Card = (props) => {
+const ProductCard = (props) => {
     const {item} = props
     return (
         <CardWrapper  key={item.id}>
@@ -41,6 +41,7 @@ const CardWrapper = styled.div`
     justify-content: center;
     align-items: center;
     border-radius: 10px;
+    margin-bottom: 13px;
     z-index: -1;
     &:hover {
       border: 1px solid lightblue;
@@ -105,4 +106,4 @@ const CardWrapper = styled.div`
   }
 `
 
-export default Card;
+export default ProductCard;

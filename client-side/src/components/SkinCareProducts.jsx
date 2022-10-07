@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { SkinCareItems } from "../data";
-import Card from "./Card";
+import ProductCard from "./ProductCard";
 
 const SkinCareProducts = () => {
   return (
@@ -16,7 +16,7 @@ const SkinCareProducts = () => {
       </div>
       <div className="wrapper">
         {SkinCareItems.map((item) => (
-            <Card item={item} key={item.id} />
+            <ProductCard item={item} key={item.id} />
         ))}
       </div>
     </Container>

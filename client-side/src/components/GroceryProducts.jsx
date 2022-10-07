@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { GroceryItems } from "../data";
-import Card from "./Card";
+import ProductCard from "./ProductCard";
 
 const GroceryProducts = () => {
   return (
@@ -16,7 +16,7 @@ const GroceryProducts = () => {
       </div>
       <div className="wrapper">
         {GroceryItems.map((item) => (
-            <Card item={item} />
+            <ProductCard item={item} />
         ))}
       </div>
     </Container>

@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { HairCareItems } from "../data";
-import Card from "./Card";
+import ProductCard from "./ProductCard";
 
 const HairCareProducts = () => {
   return (
@@ -16,7 +16,7 @@ const HairCareProducts = () => {
       </div>
       <div className="wrapper">
         {HairCareItems.map((item) => (
-            <Card item={item} />
+            <ProductCard item={item} />
         ))}
       </div>
     </Container>

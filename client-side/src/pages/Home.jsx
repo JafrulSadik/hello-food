@@ -8,14 +8,13 @@ import MedicinalHerbsProducts from "../components/MedicinalHerbsProducts";
 import MobileMenu from "../components/MobileMenu";
 import Navbar from "../components/Navbar";
 import SkinCareProducts from "../components/SkinCareProducts";
-import './Home.css';
 
 const Home = () => {
   return (
     <div>
-      <Navbar></Navbar>
+      <Navbar/>
+      <Carousel/>
       <MobileMenu/>
-      {/* <Carousel /> */}
       <Categories />
       <AllProducts />
       <GroceryProducts />

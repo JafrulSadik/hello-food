@@ -127,6 +127,7 @@ const MobileMenu = () => {
     if(props){
       setSearch({
         "transform": "translateY(0px)",
+        "position" : "fixed",
         "transition" : "0.5s"
       })
     } else {
