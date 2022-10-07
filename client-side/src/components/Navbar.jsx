@@ -17,6 +17,7 @@ import { tablet } from "../responsive";
     left: 0;
     align-items: center;
     padding:0px 10%;
+    background-color: white;
     height: 100px;
     box-shadow: 0 -1px 10px rgba(59, 59, 59, 0.111);
     text-align: center;
@@ -251,8 +252,6 @@ const Navbar = () => {
   const [active, setActive] = useState({display : "none"});
 
   const login = 0;
-
-  console.log(active);
 
   const handleAccountClick = () =>{
     if(active.display === "none"){

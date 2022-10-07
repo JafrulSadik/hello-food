@@ -1,12 +1,13 @@
 import React from "react";
+import Carousel from "../components/Carousel";
 import MobileMenu from "../components/MobileMenu";
 import Navbar from "../components/Navbar";
-import './Home.css';
 
 const Home = () => {
   return (
     <div>
-      <Navbar></Navbar>
+      <Navbar/>
+      <Carousel/>
       <MobileMenu/>
     </div>
   );
