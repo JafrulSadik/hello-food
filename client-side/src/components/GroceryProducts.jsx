@@ -1,21 +1,21 @@
 import React from "react";
 import styled from "styled-components";
-import { AllProductItems } from "../data";
+import { GroceryItems } from "../data";
 import Card from "./Card";
 
-const AllProducts = () => {
+const GroceryProducts = () => {
   return (
     <Container>
       <div className="header">
         <div className="name">
-          <h1>All Products</h1>
+          <h1>Grocery</h1>
         </div>
         <div className="seeAll">
           <span>See All</span>
         </div>
       </div>
       <div className="wrapper">
-        {AllProductItems.map((item) => (
+        {GroceryItems.map((item) => (
             <Card item={item} />
         ))}
       </div>
@@ -47,4 +47,4 @@ const Container = styled.div`
   }
 `;
 
-export default AllProducts;
+export default GroceryProducts;

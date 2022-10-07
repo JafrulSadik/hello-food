@@ -1,21 +1,21 @@
 import React from "react";
 import styled from "styled-components";
-import { AllProductItems } from "../data";
+import { HairCareItems } from "../data";
 import Card from "./Card";
 
-const AllProducts = () => {
+const HairCareProducts = () => {
   return (
     <Container>
       <div className="header">
         <div className="name">
-          <h1>All Products</h1>
+          <h1>Hair Care and Treatment</h1>
         </div>
         <div className="seeAll">
           <span>See All</span>
         </div>
       </div>
       <div className="wrapper">
-        {AllProductItems.map((item) => (
+        {HairCareItems.map((item) => (
             <Card item={item} />
         ))}
       </div>
@@ -47,4 +47,4 @@ const Container = styled.div`
   }
 `;
 
-export default AllProducts;
+export default HairCareProducts;

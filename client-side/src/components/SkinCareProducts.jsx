@@ -1,22 +1,22 @@
 import React from "react";
 import styled from "styled-components";
-import { AllProductItems } from "../data";
+import { SkinCareItems } from "../data";
 import Card from "./Card";
 
-const AllProducts = () => {
+const SkinCareProducts = () => {
   return (
     <Container>
       <div className="header">
         <div className="name">
-          <h1>All Products</h1>
+          <h1>Skin Care - Face Mask &‌ Packs</h1>
         </div>
         <div className="seeAll">
           <span>See All</span>
         </div>
       </div>
       <div className="wrapper">
-        {AllProductItems.map((item) => (
-            <Card item={item} />
+        {SkinCareItems.map((item) => (
+            <Card item={item} key={item.id} />
         ))}
       </div>
     </Container>
@@ -47,4 +47,4 @@ const Container = styled.div`
   }
 `;
 
-export default AllProducts;
+export default SkinCareProducts;
