@@ -18,6 +18,7 @@ import { tablet } from "../responsive";
     align-items: center;
     padding:0px 10%;
     height: 100px;
+    background-color: white;
     box-shadow: 0 -1px 10px rgba(59, 59, 59, 0.111);
     text-align: center;
 
