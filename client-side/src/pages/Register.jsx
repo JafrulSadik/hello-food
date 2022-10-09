@@ -6,31 +6,30 @@ import Footer from "../components/Footer";
 import MobileMenu from "../components/MobileMenu";
 import Navbar from "../components/Navbar";
 import { mobile } from "../responsive";
-import {Link} from 'react-router-dom'
 
-const Login = () => {
+const Register = () => {
   return (
     <>
       <Navbar />
       <Container>
         <div className="wrapper">
           <form className="loginForm">
-            <h1>Login</h1>
+            <h2>Create Account</h2>
+            <label for="email">Name</label>
+            <input type="email" name="email" placeholder="Name" required />
             <label for="email">Email</label>
             <input type="email" name="email" placeholder="Email" required />
             <label for="password">Password</label>
+            <input type="email" name="email" placeholder="Password" required />
+            <label for="password">Confirm Password</label>
             <input
               type="password"
               name="password"
               placeholder="Password"
               required
             />
-            <a href="...">Forgot Password?</a>
-            <button>Login</button>
-            <div className="signup">
-              <p>Don't have an account? <Link to='/register'>Sign Up</Link> </p>
-              <p>Or Login Using</p>
-            </div>
+            <button>Register</button>
+            <p>Or Join with</p>
             <div className="icons">
               <a href="/">
                 <FontAwesomeIcon className="facebook" icon={faFacebookF} />
@@ -69,10 +68,10 @@ const Container = styled.div`
     margin: 50px 0;
     border: 1px solid #a19c9c49;
     ${mobile({
-      'width': '70%'
+      width: "70%",
     })}
   }
-  .loginForm h1 {
+  .loginForm h2 {
     text-align: center;
     margin: 20 0;
     padding: 10px;
@@ -94,15 +93,10 @@ const Container = styled.div`
     font-size: 15px;
     color: black;
   }
-  .loginForm>.signup {
+  .loginForm p {
     text-align: center;
     margin: 10px 0;
-    font-size: 14px;
-    display: flex;
-    flex-direction: column;
-    gap: 10px 0;
   }
-
   .loginForm button {
     padding: 8px 0;
     background-color: #10918a;
@@ -125,21 +119,21 @@ const Container = styled.div`
     top: 0;
     &:hover {
       top: -2px;
-      transition: .3s;
+      transition: 0.3s;
     }
   }
   .icons .facebook {
     border-radius: 50%;
-    background: #3B5998;
+    background: #3b5998;
     color: white;
     padding: 10px 13px;
   }
   .icons .google {
     border-radius: 50%;
-    background: #E62833;
+    background: #e62833;
     color: white;
     padding: 10px;
   }
 `;
 
-export default Login;
+export default Register;
