@@ -15,7 +15,8 @@ const Container = styled.div`
   color: #1c7658;
 
   ${mobile({
-    "margin" : "10px 0px"
+    "marginTop" : "20px",
+    "marginBottom" : "0px"
   })}
 `;
 const Wrapper = styled.div`
@@ -28,7 +29,8 @@ const Wrapper = styled.div`
   align-items: center;
 
   ${mobile({
-    "justifyContent" : "space-evenly"
+    "justifyContent" : "center",
+    "gap" : "20px 20px"
   })}
 `
 const Card = styled.div`
@@ -49,9 +51,7 @@ const Card = styled.div`
     color:  #01936c;
   }
 
-  ${mobile({
-    "marginBottom" : "30px"
-  })}
+  
 `;
 const ImageDiv = styled.div`
   height: 100px;

@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { SkinCareItems } from "../data";
+import { mobile } from "../responsive";
 import ProductCard from "./ProductCard";
 
 const SkinCareProducts = () => {
@@ -8,15 +9,15 @@ const SkinCareProducts = () => {
     <Container>
       <div className="header">
         <div className="name">
-          <span className="text">Skin Care - Face Mask &‌ Packs</span>
+          <div className="text">Skin Care <span> - Face Mask &‌ Packs</span></div>
         </div>
         <div className="seeAll">
           <span>See More</span>
         </div>
       </div>
       <div className="wrapper">
-        {SkinCareItems.map((item) => (
-            <ProductCard item={item} />
+        {SkinCareItems.map((item, index) => (
+            <ProductCard item={item} key={index} />
         ))}
       </div>
     </Container>
@@ -24,7 +25,10 @@ const SkinCareProducts = () => {
 };
 
 const Container = styled.div`
-    margin: 50px 10px;
+    margin: 50px 50px;
+    ${mobile({
+      margin: "0px 20px"
+    })}
 
   .header {
     display: flex;
@@ -37,6 +41,16 @@ const Container = styled.div`
     font-size: 30px;
     font-weight: 700;
     color: #253d4e;
+
+    ${mobile({
+      fontSize: "20px"
+    })}
+  }
+
+  .text > span {
+    ${mobile({
+      display: "none"
+    })}
   }
 
   .seeAll {
@@ -46,6 +60,10 @@ const Container = styled.div`
     font-size: 16px;
     font-weight: 600;
     color: #253d4e;
+
+    ${mobile({
+      fontSize: "14px"
+    })}
   }
   .wrapper {
     display: flex;

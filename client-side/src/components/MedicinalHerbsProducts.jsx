@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { MedicinalHerbsItems } from "../data";
+import { mobile } from "../responsive";
 import ProductCard from "./ProductCard";
 
 const MedicinalHerbsProducts = () => {
@@ -15,8 +16,8 @@ const MedicinalHerbsProducts = () => {
         </div>
       </div>
       <div className="wrapper">
-        {MedicinalHerbsItems.map((item) => (
-            <ProductCard item={item} />
+        {MedicinalHerbsItems.map((item, index) => (
+            <ProductCard item={item}  key={index}/>
         ))}
       </div>
     </Container>
@@ -24,7 +25,10 @@ const MedicinalHerbsProducts = () => {
 };
 
 const Container = styled.div`
-    margin: 50px 10px;
+    margin: 50px 50px;
+    ${mobile({
+      margin: "0px 20px"
+    })}
 
   .header {
     display: flex;
@@ -37,6 +41,10 @@ const Container = styled.div`
     font-size: 30px;
     font-weight: 700;
     color: #253d4e;
+
+    ${mobile({
+      fontSize: "20px"
+    })}
   }
 
   .seeAll {
@@ -46,6 +54,10 @@ const Container = styled.div`
     font-size: 16px;
     font-weight: 600;
     color: #253d4e;
+
+    ${mobile({
+      fontSize: "14px"
+    })}
   }
   .wrapper {
     display: flex;

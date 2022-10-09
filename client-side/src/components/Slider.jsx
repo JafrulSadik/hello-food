@@ -36,7 +36,7 @@ const Img = styled.img`
     border-radius: 15px;
 
     ${tablet({
-        "height": "30vh",
+        "height": "40vh",
     })}
 
     ${mobile({
@@ -65,8 +65,8 @@ const Slider = () => {
         className="mySwiper"
       >
         {
-            sliderItems.map((item) => (
-                <SwiperSlide className='swiperStyle'>
+            sliderItems.map((item, index) => (
+                <SwiperSlide className='swiperStyle' key={index}>
                     <Link href='/'><Img src={item.img} alt="text"></Img></Link>
                 </SwiperSlide>
             ))

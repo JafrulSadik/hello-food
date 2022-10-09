@@ -1,6 +1,7 @@
 import React from "react";
 import AllProducts from "../components/AllProducts";
 import Categories from "../components/Categories";
+import Footer from "../components/Footer";
 import GroceryProducts from "../components/GroceryProducts";
 import HairCareProducts from "../components/HairCareProducts";
 import MedicinalHerbsProducts from "../components/MedicinalHerbsProducts";
@@ -22,6 +23,7 @@ const Home = () => {
       <HairCareProducts/>
       <MedicinalHerbsProducts/>
       <SkinCareProducts/>
+      <Footer/>
     </div>
   );
 

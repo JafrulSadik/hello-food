@@ -316,9 +316,9 @@ const Navbar = () => {
               </MyAccount>
               <Link1>
                   <Span>
-                    {login ? <CgLogIn/> : <CgLogOut/>}
+                    {login ?  <CgLogOut/> : <CgLogIn/> }
                   </Span>
-                  <Text>{login ? "Login" : "Logout"}</Text>
+                  <Text>{login ? "Logout" : "Login" }</Text>
               </Link1>
           </NavLink>
       </Wrapper>

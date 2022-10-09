@@ -1,6 +1,7 @@
 import React from 'react';
 import { FaShoppingCart } from 'react-icons/fa';
 import styled from 'styled-components';
+import { mobile } from "../responsive";
 
 const ProductCard = (props) => {
     const {item} = props
@@ -43,7 +44,15 @@ const CardWrapper = styled.div`
       box-shadow: 0 0 15px #33333316;
       border: 1px solid #3bb77d57;
       transition: 0.3s;
+
     }
+
+    ${mobile({
+      height : "272px",
+      width : "176px",
+      borderRadius : "5px",
+      marginBottom: "8px"
+    })}
 
 
     .new {
@@ -56,12 +65,24 @@ const CardWrapper = styled.div`
     font-size: 14px;
     color: white;
     font-size: 12px;
+
+    ${mobile({
+      padding: "5px 12px",
+      borderRadius: "20px",
+      fontSize: "10px",
+      color: "white",
+    })}
   }
 
   .title{
     font-size: 14px;
     font-weight: bold;
     color: #253d4e;
+
+    ${mobile({
+      fontSize: "13px",
+      fontWeight: 600
+    })}
   }
 
   .imageDiv {
@@ -81,7 +102,18 @@ const CardWrapper = styled.div`
       height: 162px;
       width: 162px;
       transition: 1s;
+
+      ${mobile({
+        height : "97px",
+        width : "97px",
+        transition: "1s",
+    })}
     }
+
+    ${mobile({
+      height : "95px",
+      width : "95px"
+    })}
   }
 
   .textDiv {
@@ -90,6 +122,9 @@ const CardWrapper = styled.div`
     justify-content: center;
     align-items: center;
     margin: 0 10px;
+    ${mobile({
+      margin: "10px"
+    })}
   }
 
   .priceAndButton {
@@ -99,12 +134,19 @@ const CardWrapper = styled.div`
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
+
+    ${mobile({
+      margin: "10px"
+    })}
   }
 
   .priceAndButton span{
     font-size: 14px;
     font-weight: bold;
     color: #3BB77E;
+    ${mobile({
+      fontSize: "11px"
+    })}
   }
   
   .priceAndButton button{
@@ -123,6 +165,10 @@ const CardWrapper = styled.div`
       background-color: #3BB77E;
       color: white;
     }
+
+    ${mobile({
+      fontSize: "11px"
+    })}
   }
 `
 
