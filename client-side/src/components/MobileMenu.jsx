@@ -17,7 +17,7 @@ const Wrapper = styled.div`
     bottom: 0;
     border-radius: 10px 10px 0px 0px;
     box-shadow: 0 -1px 10px rgba(59, 59, 59, 0.111);
-
+    z-index: 10;
 
     ${tablet({
       display: "block"
@@ -87,7 +87,8 @@ const Wrapper = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    transform: translateY(-100px)
+    transform: translateY(-100px);
+    z-index: 11;
   `
 
   const SearchBar = styled.div`

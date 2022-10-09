@@ -13,7 +13,15 @@ const Wrapper = styled.div`
     }
 
     .mySwiper{
-        //margin: 30px 0px;
+        margin: 30px 0px;
+
+        ${tablet({
+          margin : "15px 0px"
+        })}
+
+        ${mobile({
+          margin : "10px 0px"
+        })}
     }
 
     .swiper-pagination-bullet-active{
@@ -22,16 +30,18 @@ const Wrapper = styled.div`
 `
 
 const Img = styled.img`
-    width: 100vw;
-    height: 70vh;
+    width: 95vw;
+    height: 80vh;
     text-align: center;
+    border-radius: 15px;
 
     ${tablet({
-        "height": "40vh"
+        "height": "30vh",
     })}
 
     ${mobile({
-        "height": "20vh"
+        "height": "20vh",
+        "borderRadius" : "0px"
     })}
 `
 const Link = styled.a`

@@ -21,7 +21,7 @@ import { tablet } from "../responsive";
     height: 100px;
     box-shadow: 0 -1px 10px rgba(59, 59, 59, 0.111);
     text-align: center;
-    z-index: 999;
+    z-index: 10;
 
     ${tablet({
         "height" : "70px",

@@ -4,7 +4,7 @@ import grocery from "../images/categories/gorcery-removebg-preview.png";
 import hairCare from "../images/categories/Hair_Care_2-removebg-preview.png";
 import medicialHerbs from "../images/categories/healing-herbs-removebg-preview.png";
 import skinCare from "../images/categories/Mosur_dal_gura_100gm-removebg-preview.png";
-
+import { mobile } from "../responsive";
 const Container = styled.div`
   display: flex;
   justify-content: center;
@@ -12,6 +12,11 @@ const Container = styled.div`
   height: 100%;
   width: 100%;
   margin: 50px 0;
+  color: #1c7658;
+
+  ${mobile({
+    "margin" : "10px 0px"
+  })}
 `;
 const Wrapper = styled.div`
   height: 100%;
@@ -21,7 +26,10 @@ const Wrapper = styled.div`
   flex-grow: 1;
   justify-content: space-around;
   align-items: center;
-  gap: 20px;
+
+  ${mobile({
+    "justifyContent" : "space-evenly"
+  })}
 `
 const Card = styled.div`
   display: flex;
@@ -34,6 +42,16 @@ const Card = styled.div`
   align-items: center;
   border-radius: 10px;
   cursor: pointer;
+  border: 2px solid #fff;
+
+  &:hover{
+    border: 2px solid #14a7761f;
+    color:  #01936c;
+  }
+
+  ${mobile({
+    "marginBottom" : "30px"
+  })}
 `;
 const ImageDiv = styled.div`
   height: 100px;
@@ -48,7 +66,6 @@ const Image = styled.img`
 const TextDiv = styled.div``;
 const Text = styled.span`
   font-size: 16px;
-  color: #253d4e;
   font-weight: 700;
 `;
 
