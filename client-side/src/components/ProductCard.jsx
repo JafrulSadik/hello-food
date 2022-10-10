@@ -38,6 +38,7 @@ const CardWrapper = styled.div`
     align-items: center;
     border-radius: 10px;
     margin-bottom: 13px;
+    background-color: #fff;
     //margin: 1px;
     &:hover{
       //border: 2px solid #14a7761f;
@@ -48,10 +49,10 @@ const CardWrapper = styled.div`
     }
 
     ${mobile({
-      height : "272px",
-      width : "176px",
+      height : "248px",
+      width : "160px",
       borderRadius : "5px",
-      marginBottom: "8px"
+      marginBottom : "0"
     })}
 
 
@@ -80,7 +81,7 @@ const CardWrapper = styled.div`
     color: #253d4e;
 
     ${mobile({
-      fontSize: "13px",
+      fontSize: "11px",
       fontWeight: 600
     })}
   }
@@ -104,15 +105,15 @@ const CardWrapper = styled.div`
       transition: 1s;
 
       ${mobile({
-        height : "97px",
-        width : "97px",
+        height : "92px",
+        width : "92px",
         transition: "1s",
     })}
     }
 
     ${mobile({
-      height : "95px",
-      width : "95px"
+      height : "90px",
+      width : "90px"
     })}
   }
 

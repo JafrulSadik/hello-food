@@ -27,7 +27,7 @@ const AllProducts = () => {
 const Container = styled.div`
     margin: 50px 50px;
     ${mobile({
-      margin: "0px 20px"
+      margin: "0px 5px"
     })}
 
   .header {
@@ -71,7 +71,12 @@ const Container = styled.div`
     align-items: center;
     flex-wrap: wrap;
     flex-grow: 1;
-    gap: 15px;
+    gap: 5px;
+
+    ${mobile({
+      justifyContent : "space-evenly",
+      gap: "15px 0px"
+    })}
   }
 `;
 
