@@ -27,7 +27,7 @@ const SkinCareProducts = () => {
 const Container = styled.div`
     margin: 50px 50px;
     ${mobile({
-      margin: "0px 20px"
+      margin: "0px 5px"
     })}
 
   .header {
@@ -35,6 +35,11 @@ const Container = styled.div`
     justify-content: space-between;
     align-items: center;
     margin: 30px 10px;
+
+    ${mobile({
+      marginTop : "0px",
+      margin: "20px 20px"
+    })}
   }
 
   .text{
@@ -46,13 +51,11 @@ const Container = styled.div`
       fontSize: "20px"
     })}
   }
-
   .text > span {
     ${mobile({
       display: "none"
     })}
   }
-
   .seeAll {
     display: flex;
     align-items: center;
@@ -72,7 +75,7 @@ const Container = styled.div`
     align-items: center;
     flex-wrap: wrap;
     flex-grow: 1;
-    gap: 15px;
+    gap: 5px;
   }
 `;
 
