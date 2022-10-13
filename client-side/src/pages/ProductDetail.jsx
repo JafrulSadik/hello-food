@@ -1,20 +1,23 @@
 import React, { useState } from "react";
 import { AiOutlineMinus, AiOutlinePlus } from "react-icons/ai";
 import styled from "styled-components";
+import Footer from "../components/Footer";
 import MobileMenu from "../components/MobileMenu";
 import Navbar from "../components/Navbar";
+import ProductCard from "../components/ProductCard";
+import { AllProductItems} from "../data";
 
 const ProductDetail = () => {
   const [quantity, setQuantity] = useState(1);
 
   const handleQuantity = (type) => {
-    if(type === 'minus') {
-      setQuantity(quantity > 1 ? quantity - 1 : 1)
-     } else {
-      setQuantity(quantity + 1)
-     }
-}
-  
+    if (type === "minus") {
+      setQuantity(quantity > 1 ? quantity - 1 : 1);
+    } else {
+      setQuantity(quantity + 1);
+    }
+  };
+
   return (
     <>
       <Navbar />
@@ -32,22 +35,26 @@ const ProductDetail = () => {
               <p>Availabilty : In Stock</p>
               <h4>320 Tk</h4>
               <p>Quantity:</p>
-                <div className="priceChoosen">
-                  <button
-                    type="button" style={{backgroundColor : (quantity > 1) ? '#EB5525' : '#ef8f6fc8', cursor : (quantity > 1) ? 'pointer' : 'not-allowed' }}
-                    onClick={() => handleQuantity('minus')}
-                  >
-                    <AiOutlineMinus />
-                  </button>
-                  <input type="text" placeholder={quantity} />
-                  <button
-                    name="plus"
-                    type="button"
-                    onClick={() => handleQuantity('plus')}
-                  >
-                    <AiOutlinePlus />
-                  </button>
-                </div>
+              <div className="priceChoosen">
+                <button
+                  type="button"
+                  style={{
+                    backgroundColor: quantity > 1 ? "#3bb54a" : "#7cce86",
+                    cursor: quantity > 1 ? "pointer" : "not-allowed",
+                  }}
+                  onClick={() => handleQuantity("minus")}
+                >
+                  <AiOutlineMinus />
+                </button>
+                <input type="text" placeholder={quantity} />
+                <button
+                  name="plus"
+                  type="button"
+                  onClick={() => handleQuantity("plus")}
+                >
+                  <AiOutlinePlus />
+                </button>
+              </div>
               <div className="addAndBuy">
                 <button className="addToCart" type="button">
                   Add to cart
@@ -58,28 +65,58 @@ const ProductDetail = () => {
               </div>
             </div>
           </section>
-          <section className="midSection"></section>
-          <section className="bottomSection"></section>
+          <section className="midSection">
+            <h5><span>Description</span></h5>
+            <div className="descDiv">
+              <h3>Himalayan Natural Pink Salt Rock Salt 1 kg</h3>
+              <ul>
+                <li>Origin: Pakistan</li>
+                <li>Weight: 1 kg</li>
+                <li>জার প্যাক</li>
+                <li>Quality Pure</li>
+                <li>All thing buy at wholesale price</li>
+                <li>99% clients satisfaction</li>
+              </ul>
+              <p>
+                রোগ প্রতিরোধ ক্ষমতা থাকেসৈন্ধব লবণের প্রাকৃতিক উপায়েতৈরি হয় এই
+                লবণ ফলে ঠান্ডা লাগা, জ্বর, ফ্লু, অ্যালার্জির মতো বেশ কিছু রোগের
+                হাত থেকে শরীরকে বাঁচায়।দ্বিতীয়ত দেহের ওজন কমায়৷ দেহে
+                ডাইজেস্টিভ জুস উৎপন্ন করে যা খুব তাড়াতাড়ি খাবার হজম করতে
+              </p>
+            </div>
+          </section>
+          <section className="bottomSection">
+          <div className="productsList">
+            {AllProductItems.map((item) => {
+              return <ProductCard item={item} key={item.id} />;
+            })}
+          </div>
+          </section>
         </div>
       </Container>
       <MobileMenu />
+      <Footer />
     </>
   );
 };
 
 const Container = styled.div`
-  .wrapper .topSection {
+  .wrapper {
+    margin: 50px 100px;
+  }
+  .topSection {
     display: flex;
     justify-content: space-around;
     height: 500px;
-    margin: 50px 100px;
+    background-color: #fff;
+    
   }
   .topSection .imageDiv {
     flex: 1;
     display: flex;
     justify-content: center;
   }
-  .imageDiv img {
+  .imageDiv > img {
     width: 400px;
     height: 400px;
   }
@@ -92,14 +129,14 @@ const Container = styled.div`
   }
   .priceChoosen {
     width: 110px;
-    border: 1px solid #EE6443;
+    border: 1px solid #3bb54a;
     display: flex;
   }
   .priceChoosen button {
     flex: 1;
     padding: 8px;
     border: none;
-    background-color: #EE6443;
+    background-color: #3bb54a;
     color: white;
     cursor: pointer;
   }
@@ -138,5 +175,30 @@ const Container = styled.div`
       transition: 0.3s;
     }
   }
+  .midSection {
+    background-color: #fff;
+    margin: 40px 0;
+    padding: 20px;
+  }
+  .midSection h5 {
+    font-size: 18px;
+    margin: 10px;
+  }
+  .midSection span {
+    border-bottom: 2px solid green;
+  }
+  .midSection .descDiv {
+    margin: 20px 50px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .descDiv ul {
+    padding: 20px 40px;
+  }
+  .bottomSection {
+
+  }
+
 `;
 export default ProductDetail;

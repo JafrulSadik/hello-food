@@ -1,5 +1,6 @@
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
+import Account from "./pages/Account";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Prodcuts from "./pages/Prodcuts";
@@ -13,6 +14,7 @@ const App = () => {
       <Route path="/register" element={<Register />} />
       <Route path="/categories/:products" element={<Prodcuts />} />
       <Route path="/product/:id" element={<ProductDetail />} />
+      <Route path="/account" element={<Account />} />
     </Routes>
   );
 };

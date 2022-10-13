@@ -11,7 +11,7 @@ import { mobile } from "../responsive";
 
 const Prodcuts = () => {
   return (
-    <>
+    <div style={{backgroundColor: '#fcf8f8'}}>
       <Navbar />
       <Categories />
       <Container>
@@ -73,7 +73,7 @@ const Prodcuts = () => {
       </Container>
       <Footer />
       <MobileMenu />
-    </>
+    </div>
   );
 };
 

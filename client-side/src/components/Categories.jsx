@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 import grocery from "../images/categories/gorcery-removebg-preview.png";
 import hairCare from "../images/categories/Hair_Care_2-removebg-preview.png";
@@ -38,7 +39,7 @@ const Wrapper = styled.div`
     margin : "0px 10px"
   })}
 `
-const Card = styled.div`
+const Card = styled(Link)`
   display: flex;
   flex-direction: column;
   height: 160px;
@@ -50,6 +51,8 @@ const Card = styled.div`
   border-radius: 10px;
   cursor: pointer;
   border: 2px solid #f5f5f5;
+  text-decoration: none;
+  color: #01936c;
 
   &:hover{
     border: 2px solid #14a7761f;
@@ -107,15 +110,15 @@ const Categories = () => {
   return (
     <Container>
       <Wrapper>
-        <Card bg="ECFFEC">
-          <ImageDiv>
-            <Image src={grocery} />
-          </ImageDiv>
-          <TextDiv>
-            <Text>Grocery</Text>
-          </TextDiv>
-        </Card>
-        <Card bg="feefead2">
+          <Card bg="ECFFEC" to='/categories/allProducts'>
+            <ImageDiv>
+              <Image src={grocery} />
+            </ImageDiv>
+            <TextDiv>
+              <Text>Grocery</Text>
+            </TextDiv>
+          </Card>
+        <Card bg="feefead2" to='/categories/hairCare'>
           <ImageDiv>
             <Image src={hairCare} />
           </ImageDiv>
@@ -123,7 +126,7 @@ const Categories = () => {
             <Text>Hair Care</Text>
           </TextDiv>
         </Card>
-        <Card bg="F2FCE4">
+        <Card bg="F2FCE4" to='/categories/medicinalHerbs'>
           <ImageDiv>
             <Image src={medicialHerbs} />
           </ImageDiv>
@@ -131,7 +134,7 @@ const Categories = () => {
             <Text>Medicinal Herbs</Text>
           </TextDiv>
         </Card>
-        <Card bg="FFF3FF">
+        <Card bg="FFF3FF" to='/categories/skinCare'>
           <ImageDiv>
             <Image src={skinCare} />
           </ImageDiv>

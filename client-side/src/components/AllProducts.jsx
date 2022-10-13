@@ -13,7 +13,7 @@ const AllProducts = () => {
           <span className="text">All Products</span>
         </div>
         <div className="seeAll">
-          <Link className="link" to='/categories/AllProductItems'><span>See More</span></Link>
+          <Link className="link" to='/categories/allProducts'><span>See More</span></Link>
         </div>
       </div>
       <div className="wrapper">

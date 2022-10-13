@@ -50,11 +50,11 @@ const CardWrapper = styled.div`
     margin-bottom: 13px;
     background-color: #fff;
     cursor: pointer;
-    &:hover{
+    /* &:hover{
       box-shadow: 0 0 15px #33333316;
       border: 1px solid #3bb77d57;
       transition: 0.3s;
-    }
+    } */
 
     ${mobile({
       height : "248px",
