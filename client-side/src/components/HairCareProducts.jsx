@@ -30,6 +30,12 @@ const Container = styled.div`
       margin: "0px 5px"
     })}
 
+    .text>span {
+      ${mobile({
+        display : 'none'
+      })}
+    }
+
   .header {
     display: flex;
     justify-content: space-between;
@@ -49,12 +55,6 @@ const Container = styled.div`
 
     ${mobile({
       fontSize: "20px"
-    })}
-  }
-
-  .text > span {
-    ${mobile({
-      display: "none"
     })}
   }
 
@@ -78,7 +78,11 @@ const Container = styled.div`
     flex-wrap: wrap;
     flex-grow: 1;
     gap: 5px;
+
+    ${mobile({
+      justifyContent : "space-evenly",
+      gap: "15px 0px"
+    })}
   }
 `;
-
 export default HairCareProducts;

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { BiSearch } from "react-icons/bi";
 import { CgLogIn, CgLogOut, CgProfile } from "react-icons/cg";
 import { FaShoppingCart } from "react-icons/fa";
+import { Link } from 'react-router-dom';
 import styled from "styled-components";
 import logo from "../images/hello_food.png";
 import { tablet } from "../responsive";
@@ -24,12 +25,12 @@ import { tablet } from "../responsive";
     z-index: 10;
 
     ${tablet({
-        "height" : "70px",
+        "height" : "65px",
         "justify-content" : "space-around",
     })}
   `
 
-  const Logo = styled.a`
+  const Logo = styled.div`
     flex: 1;
     text-align: start;
 
@@ -97,7 +98,7 @@ import { tablet } from "../responsive";
   const NavButton = styled.button`
     width: 140px;
     height: 47px;
-    background-color: #3BB77E;
+    background-color: #3BB54A;
     color: white;
     border: none;
     border-radius: 0px 8px 8px 0px;
@@ -126,7 +127,7 @@ import { tablet } from "../responsive";
 
   `
 
-  const Link = styled.a`
+  const LinkPc = styled.a`
     display: flex;
     gap: 8px;
     align-items: center;
@@ -180,7 +181,7 @@ import { tablet } from "../responsive";
     })}
   `
 
-  const Link1 = styled.a`
+  const LinkLogin = styled(Link)`
     display: none;
     gap: 8px;
     align-items: center;
@@ -190,6 +191,8 @@ import { tablet } from "../responsive";
     background-color: #f6f6f6;
     border-radius: 5px;
     color: #7E7F82;
+    text-decoration: none;
+    
     &:hover{
         background-color: #3BB77E;
         color: white;
@@ -201,7 +204,12 @@ import { tablet } from "../responsive";
           "display" : "flex",
           "padding" : "7px 10px",
           "gap" : "4px",
+          "alignItems" : "center"
       })}
+  `
+
+  const LogoLink = styled(Link)`
+    text-decoration : none;
   `
   
   const Text = styled.p`
@@ -264,8 +272,11 @@ const Navbar = () => {
 
   return (
       <Wrapper>
-          <Logo href='/#'>
-              <LogoImage src={logo}/>
+          <Logo href='/'>
+              <LogoLink to='/'>
+                <LogoImage src={logo}/>
+              </LogoLink>
+              
           </Logo>
 
           <Form>
@@ -277,10 +288,10 @@ const Navbar = () => {
           </Form>
 
           <NavLink>
-              <Link>
+              <LinkPc>
                   <Span><FaShoppingCart></FaShoppingCart></Span>
                   <Text>Cart</Text>
-              </Link>
+              </LinkPc>
               <MyAccount onClick={()=> handleAccountClick()}>
                   <AccountBtn>
                     <Span><CgProfile/></Span>
@@ -314,12 +325,22 @@ const Navbar = () => {
                     </ListOption>
                   </SubMenu>
               </MyAccount>
-              <Link1>
-                  <Span>
-                    {login ?  <CgLogOut/> : <CgLogIn/> }
-                  </Span>
-                  <Text>{login ? "Logout" : "Login" }</Text>
-              </Link1>
+
+              {
+                login ? <LinkLogin to="/">
+                            <Span>
+                              <CgLogOut/>
+                            </Span>
+                            <Text>Logout</Text>
+                        </LinkLogin>
+                      : <LinkLogin to="/login">
+                            <Span>
+                              <CgLogIn/>
+                            </Span>
+                            <Text>Login</Text>
+                        </LinkLogin>
+              }
+              
           </NavLink>
       </Wrapper>
   )

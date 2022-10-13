@@ -64,6 +64,9 @@ const Container = styled.div`
   width: 100%;
   background-color: #0d0d0d;
   color: white;
+  ${mobile({
+    marginTop: '20px'
+  })}
   .wrapper {
     display: flex;
     flex-direction: row;

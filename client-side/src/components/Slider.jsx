@@ -16,16 +16,16 @@ const Wrapper = styled.div`
         margin: 30px 0px;
 
         ${tablet({
-          margin : "15px 0px"
+          margin : 0
         })}
 
         ${mobile({
-          margin : "10px 0px"
+          margin : 0
         })}
     }
 
     .swiper-pagination-bullet-active{
-        background-color: #15151553;
+        background-color: #cbcbcb83;
     }
 `
 
@@ -37,10 +37,11 @@ const Img = styled.img`
 
     ${tablet({
         "height": "40vh",
+        "width" : "100vw"
     })}
 
     ${mobile({
-        "height": "20vh",
+        "height": "24vh",
         "borderRadius" : "0px"
     })}
 `
@@ -58,7 +59,7 @@ const Slider = () => {
             disableOnInteraction: false,
           }}
         pagination={{
-          dynamicBullets: true,
+          //dynamicBullets: true,
           clickable: true
         }}
         modules={[Pagination, Autoplay]}

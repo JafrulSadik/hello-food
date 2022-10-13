@@ -9,7 +9,9 @@ const SkinCareProducts = () => {
     <Container>
       <div className="header">
         <div className="name">
-          <div className="text">Skin Care <span> - Face Mask &‌ Packs</span></div>
+          <div className="text">
+            Skin Care <span> - Face Mask &‌ Packs</span>
+          </div>
         </div>
         <div className="seeAll">
           <span>See More</span>
@@ -17,7 +19,7 @@ const SkinCareProducts = () => {
       </div>
       <div className="wrapper">
         {SkinCareItems.map((item, index) => (
-            <ProductCard item={item} key={index} />
+          <ProductCard item={item} key={index} />
         ))}
       </div>
     </Container>
@@ -25,10 +27,16 @@ const SkinCareProducts = () => {
 };
 
 const Container = styled.div`
-    margin: 50px 50px;
+  margin: 50px 50px;
+  ${mobile({
+    margin: "0px 5px",
+  })}
+
+  .text>span {
     ${mobile({
-      margin: "0px 5px"
+      display: "none",
     })}
+  }
 
   .header {
     display: flex;
@@ -37,25 +45,21 @@ const Container = styled.div`
     margin: 30px 10px;
 
     ${mobile({
-      marginTop : "0px",
-      margin: "20px 20px"
+      marginTop: "0px",
+      margin: "20px 20px",
     })}
   }
 
-  .text{
+  .text {
     font-size: 30px;
     font-weight: 700;
     color: #253d4e;
 
     ${mobile({
-      fontSize: "20px"
+      fontSize: "20px",
     })}
   }
-  .text > span {
-    ${mobile({
-      display: "none"
-    })}
-  }
+
   .seeAll {
     display: flex;
     align-items: center;
@@ -65,7 +69,7 @@ const Container = styled.div`
     color: #253d4e;
 
     ${mobile({
-      fontSize: "14px"
+      fontSize: "14px",
     })}
   }
   .wrapper {
@@ -76,6 +80,11 @@ const Container = styled.div`
     flex-wrap: wrap;
     flex-grow: 1;
     gap: 5px;
+
+    ${mobile({
+      justifyContent: "space-evenly",
+      gap: "15px 0px",
+    })}
   }
 `;
 

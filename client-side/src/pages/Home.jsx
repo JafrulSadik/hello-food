@@ -13,7 +13,7 @@ import Slider from "../components/Slider";
 
 const Home = () => {
   return (
-    <div>
+    <div style={{background: "#fcf8f8"}}>
       <Navbar/>
       <Slider/>
       <MobileMenu/>

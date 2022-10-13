@@ -1,8 +1,7 @@
+import { faCartShopping, faHouse, faMagnifyingGlass, faUser } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useState } from 'react';
-import { AiOutlineShopping, AiOutlineShoppingCart } from "react-icons/ai";
-import { BiHome, BiLeftArrowAlt } from "react-icons/bi";
-import { HiOutlineSearch } from "react-icons/hi";
-import { VscAccount } from "react-icons/vsc";
+import { BiLeftArrowAlt } from "react-icons/bi";
 import styled from 'styled-components';
 import { tablet } from "../responsive";
 
@@ -45,7 +44,7 @@ const Wrapper = styled.div`
   const Icon = styled.a`
     text-decoration: none;
     color: gray;
-    font-size: 1rem;
+    font-size: 1.1rem;
   `
 
   const Text = styled.a`
@@ -55,33 +54,11 @@ const Wrapper = styled.div`
     color: gray;
   `
 
-  const IconShop = styled.a`
-    text-decoration: none;
-    color: gray;
-    font-size: 1.2rem;
-    transform:translateY(-18px);
-    color: #fff;
-
-    &:before{
-      content: '';
-      position: absolute;
-      top: -20px;
-      left: -16px;
-      width: 50px;
-      height: 50px;
-      background-color: #3bb77d;
-      border-radius: 50%;
-      border: 5px solid white;
-      box-shadow: 0 -1px 10px rgba(59, 59, 59, 0.111);
-      z-index: -1;
-    }
-  `
-
   const SearchScreen = styled.div`
     position: absolute;
     top: 0;
     left: 0;
-    height: 70px;
+    height: 65px;
     width: 100vw;
     background-color: white;
     display: flex;
@@ -92,7 +69,7 @@ const Wrapper = styled.div`
   `
 
   const SearchBar = styled.div`
-    width: 75%;
+    width: 85%;
     height: 40px;
     display: flex;
     align-items: center;
@@ -100,7 +77,7 @@ const Wrapper = styled.div`
 
   const Exit = styled.div`
     font-size: 1.5rem;
-    width: 60px;
+    width: 30px;
     text-align: center;
     color: #3bb77d;
   `
@@ -129,7 +106,7 @@ const MobileMenu = () => {
       setSearch({
         "transform": "translateY(0px)",
         "position" : "fixed",
-        "transition" : "0.5s"
+        "transitionDuration" : "0.5s"
       })
     } else {
       setSearch({
@@ -146,17 +123,17 @@ const MobileMenu = () => {
       <Wrapper>
         <Menu>
           <List>
-            <Icon href='/home'>
-              <BiHome/>
+            <Icon href='/'>
+              <FontAwesomeIcon icon={faHouse} />
             </Icon>
-            <Text href='/home'>
+            <Text href='/'>
               Home
             </Text>
           </List>
 
           <List>
             <Icon onClick={() => handleSearch("searchBtn")}>
-              <HiOutlineSearch/>
+              <FontAwesomeIcon icon={faMagnifyingGlass} />
             </Icon>
             <Text onClick={() => handleSearch("searchBtn")}>
               Search
@@ -164,29 +141,20 @@ const MobileMenu = () => {
           </List>
 
           <List>
-            <IconShop href='/Shop'>
-              <AiOutlineShopping/>
-            </IconShop>
-            <Text href='/Shop'>
-              Shop
-            </Text>
-          </List>
-
-          <List>
-            <Icon href='/Cart'>
-              <AiOutlineShoppingCart/>
+            <Icon href='/cart'>
+              <FontAwesomeIcon icon={faCartShopping} />
             </Icon>
-            <Text href='/Cart'>
+            <Text href='/cart'>
               Cart
             </Text>
           </List>
 
           <List>
-            <Icon href='/Profile'>
-              <VscAccount/>
+            <Icon href='/account' >
+              <FontAwesomeIcon icon={faUser} />
             </Icon>
-            <Text href='/Profile'>
-              Profile
+            <Text href='/account'>
+              Account
             </Text>
           </List>
 

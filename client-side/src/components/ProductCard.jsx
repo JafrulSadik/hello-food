@@ -1,31 +1,41 @@
 import React from 'react';
 import { FaShoppingCart } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { mobile } from "../responsive";
 
 const ProductCard = (props) => {
     const {item} = props
     return (
-        <CardWrapper  key={item.id}>
-            <div className="new">
-              <p>New</p>
-            </div>
-            <div className="imageDiv">
-              <img
-                src={item.img}
-                alt=""
-              />
-            </div>
-            <div className="textDiv">
-              <span className='title'>{item.title}</span>
-            </div>
-            <div className="priceAndButton">
-                <span>{item.price} Tk</span>
-                <button><FaShoppingCart/> Add</button>
-            </div>
-          </CardWrapper>
+        <Container>
+          <Link className='link' to={`/product/${item.id}`} >
+              <CardWrapper  key={item.id}>
+                  <div className="new">
+                    <p>New</p>
+                  </div>
+                  <div className="imageDiv">
+                    <img
+                      src={item.img}
+                      alt=""
+                    />
+                  </div>
+                  <div className="textDiv">
+                    <span className='title'>{item.title}</span>
+                  </div>
+                  <div className="priceAndButton">
+                      <span>{item.price} Tk</span>
+                      <button><FaShoppingCart/> Add</button>
+                  </div>
+                </CardWrapper>
+            </Link>
+          </Container>
     );
 };
+const Container = styled.div`
+  .link {
+    text-decoration: none;
+  }
+`
 
 const CardWrapper = styled.div`
     position: relative;
@@ -38,20 +48,19 @@ const CardWrapper = styled.div`
     align-items: center;
     border-radius: 10px;
     margin-bottom: 13px;
-    //margin: 1px;
+    background-color: #fff;
+    cursor: pointer;
     &:hover{
-      //border: 2px solid #14a7761f;
       box-shadow: 0 0 15px #33333316;
       border: 1px solid #3bb77d57;
       transition: 0.3s;
-
     }
 
     ${mobile({
       height : "248px",
       width : "160px",
       borderRadius : "5px",
-      marginBottom: "8px"
+      marginBottom : "0"
     })}
 
 

@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from 'react-router-dom';
 import styled from "styled-components";
 import { AllProductItems } from "../data";
 import { mobile } from "../responsive";
@@ -12,12 +13,12 @@ const AllProducts = () => {
           <span className="text">All Products</span>
         </div>
         <div className="seeAll">
-          <span>See More</span>
+          <Link className="link" to='/categories/AllProductItems'><span>See More</span></Link>
         </div>
       </div>
       <div className="wrapper">
-        {AllProductItems.map((item, index) => (
-            <ProductCard item={item} key={index}/>
+        {AllProductItems.map((item) => (
+            <ProductCard item={item} key={item.id}/>
         ))}
       </div>
     </Container>
@@ -64,6 +65,10 @@ const Container = styled.div`
       fontSize: "14px"
     })}
   }
+  .seeAll .link {
+    text-decoration: none;
+    color: black;
+  }
   .wrapper {
     display: flex;
     flex-direction: row;
@@ -72,6 +77,11 @@ const Container = styled.div`
     flex-wrap: wrap;
     flex-grow: 1;
     gap: 5px;
+
+    ${mobile({
+      justifyContent : "space-evenly",
+      gap: "15px 0px"
+    })}
   }
 `;
 
