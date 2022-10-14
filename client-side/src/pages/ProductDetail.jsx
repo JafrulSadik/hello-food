@@ -114,7 +114,7 @@ const ProductDetailContainer = styled.div`
   .wrapper {
     margin: 50px 100px;
     ${mobile({
-      margin : '20px 20px'
+      margin : '20px 10px'
     })}
   }
   .topSection {
@@ -132,12 +132,13 @@ const ProductDetailContainer = styled.div`
     flex: 1;
     width: 100%;
     text-align : center;
+    /* border: 1px solid red; */
   }
   .topSection > .imageDiv > img {
     width: 400px;
     height: 400px;
     ${mobile({
-      width : '340px',
+      width : '330px',
       height : '350px'
       
     })}
