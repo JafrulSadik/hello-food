@@ -5,7 +5,8 @@ import Footer from "../components/Footer";
 import MobileMenu from "../components/MobileMenu";
 import Navbar from "../components/Navbar";
 import ProductCard from "../components/ProductCard";
-import { AllProductItems} from "../data";
+import { AllProductItems, GroceryItems } from "../data";
+import { mobile } from "../responsive";
 
 const ProductDetail = () => {
   const [quantity, setQuantity] = useState(1);
@@ -18,10 +19,12 @@ const ProductDetail = () => {
     }
   };
 
+  console.log(quantity);
+
   return (
     <>
       <Navbar />
-      <Container>
+      <ProductDetailContainer>
         <div className="wrapper">
           <section className="topSection">
             <div className="imageDiv">
@@ -46,7 +49,11 @@ const ProductDetail = () => {
                 >
                   <AiOutlineMinus />
                 </button>
-                <input type="text" placeholder={quantity} />
+                <input
+                  type="text"
+                  onChange={(e) => setQuantity(parseInt(e.target.value))}
+                  value={quantity ? quantity : 1}
+                />
                 <button
                   name="plus"
                   type="button"
@@ -66,7 +73,9 @@ const ProductDetail = () => {
             </div>
           </section>
           <section className="midSection">
-            <h5><span>Description</span></h5>
+            <h5>
+              <span>Description</span>
+            </h5>
             <div className="descDiv">
               <h3>Himalayan Natural Pink Salt Rock Salt 1 kg</h3>
               <ul>
@@ -86,39 +95,52 @@ const ProductDetail = () => {
             </div>
           </section>
           <section className="bottomSection">
-          <div className="productsList">
-            {AllProductItems.map((item) => {
-              return <ProductCard item={item} key={item.id} />;
-            })}
-          </div>
+            <h2><span>You may also like</span></h2>
+            <div className="similarProducts">
+              {GroceryItems.map((item) => {
+                return <ProductCard item={item} key={item.id} />;
+              })}
+            </div>
           </section>
         </div>
-      </Container>
+      </ProductDetailContainer>
       <MobileMenu />
       <Footer />
     </>
   );
 };
 
-const Container = styled.div`
+const ProductDetailContainer = styled.div`
   .wrapper {
     margin: 50px 100px;
+    ${mobile({
+      margin : '20px 20px'
+    })}
   }
   .topSection {
     display: flex;
     justify-content: space-around;
-    height: 500px;
+    /* height: 500px; */
     background-color: #fff;
-    
+    ${mobile({
+      flexDirection : 'column',
+      alignItems : 'flex-start',
+      justifyContent : 'flex-start',
+    })}
   }
   .topSection .imageDiv {
     flex: 1;
-    display: flex;
-    justify-content: center;
+    width: 100%;
+    text-align : center;
   }
-  .imageDiv > img {
+  .topSection > .imageDiv > img {
     width: 400px;
     height: 400px;
+    ${mobile({
+      width : '340px',
+      height : '350px'
+      
+    })}
   }
   .topSection .infoDiv {
     flex: 1;
@@ -126,6 +148,15 @@ const Container = styled.div`
     flex-direction: column;
     gap: 20px;
     padding: 50px;
+    ${mobile({
+      padding : '20px 20px'
+    })}
+  }
+  .topSection > .infoDiv > h3 {
+    font-size: 20px;
+  }
+  .topSection > .infoDiv > h4 {
+    font-size: 20px;
   }
   .priceChoosen {
     width: 110px;
@@ -160,6 +191,9 @@ const Container = styled.div`
     border-radius: 10px;
     color: white;
     cursor: pointer;
+    ${mobile({
+      width: '100%'
+    })}
   }
   .addAndBuy .addToCart {
     background-color: #ee6443;
@@ -179,6 +213,10 @@ const Container = styled.div`
     background-color: #fff;
     margin: 40px 0;
     padding: 20px;
+    ${mobile({
+      margin: '20px 0',
+      padding: '5px 20px'
+    })}
   }
   .midSection h5 {
     font-size: 18px;
@@ -192,13 +230,36 @@ const Container = styled.div`
     display: flex;
     flex-direction: column;
     gap: 10px;
+    ${mobile({
+      margin : '10px'
+    })}
   }
   .descDiv ul {
     padding: 20px 40px;
+    ${mobile({
+      padding: '10px 30px'
+    })}
   }
-  .bottomSection {
-
+  .bottomSection > h2 {
+    text-align: center;
+    margin: 30px;
   }
+  .bottomSection > h2 > span {
+    border-bottom: 2px solid green;
+  }
+  .bottomSection > .similarProducts {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    flex-grow: 1;
+    gap: 5px;
 
+    ${mobile({
+      justifyContent: "space-evenly",
+      gap: "15px 0px",
+    })}
+  }
 `;
 export default ProductDetail;
