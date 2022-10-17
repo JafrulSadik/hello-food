@@ -138,9 +138,8 @@ const ProductDetailContainer = styled.div`
     width: 400px;
     height: 400px;
     ${mobile({
-      width : '330px',
-      height : '350px'
-      
+      width : '290px',
+      height : '310px',
     })}
   }
   .topSection .infoDiv {

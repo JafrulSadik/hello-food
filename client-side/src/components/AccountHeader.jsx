@@ -23,7 +23,7 @@ const AHContainer = styled.div`
     .topContainer {
         width: 100%;
         background-color: #3bb54a;
-        height: 220px;
+        height: 270px;
         display: flex;
         flex-direction: column;
         justify-content: center;
