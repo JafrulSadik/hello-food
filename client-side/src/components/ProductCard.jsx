@@ -44,7 +44,7 @@ const CardWrapper = styled.div`
     border: 1px solid #3bb77d31;
     height: 340px;
     width: 220px;
-    justify-content: center;
+    justify-content: center; 
     align-items: center;
     border-radius: 10px;
     margin-bottom: 13px;
@@ -100,10 +100,12 @@ const CardWrapper = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 30px 0;
+    padding: 10px 0 0 0;
+    /* border: 1px solid red; */
   }
 
   .imageDiv > img {
+    /* border: 1px solid green; */
     height: 160px;
     width: 160px;
 
@@ -113,15 +115,15 @@ const CardWrapper = styled.div`
       transition: 1s;
 
       ${mobile({
-        height : "92px",
-        width : "92px",
+        height : "112px",
+        width : "112px",
         transition: "1s",
     })}
     }
 
     ${mobile({
-      height : "90px",
-      width : "90px"
+      height : "120px",
+      width : "130px"
     })}
   }
 
@@ -131,8 +133,9 @@ const CardWrapper = styled.div`
     justify-content: center;
     align-items: center;
     margin: 0 10px;
+    /* border: 1px solid blue; */
     ${mobile({
-      margin: "10px"
+      margin: "10px 10px 0 10px"
     })}
   }
 
@@ -143,6 +146,7 @@ const CardWrapper = styled.div`
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
+    /* border: 1px solid red; */
 
     ${mobile({
       margin: "10px"

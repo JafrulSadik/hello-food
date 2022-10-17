@@ -13,7 +13,7 @@ const AllProducts = () => {
           <span className="text">All Products</span>
         </div>
         <div className="seeAll">
-          <Link className="link" to='/categories/allProducts'><span>See More</span></Link>
+          <Link className="link" to='/categories/allProducts'><span className="seeAllSpan">View All</span></Link>
         </div>
       </div>
       <div className="wrapper">
@@ -46,7 +46,8 @@ const Container = styled.div`
   .text{
     font-size: 30px;
     font-weight: 700;
-    color: #253d4e;
+    color: #01936c;
+    /* border-bottom: 1px solid #01936c; */
 
     ${mobile({
       fontSize: "20px"
@@ -59,7 +60,9 @@ const Container = styled.div`
     justify-content: center;
     font-size: 16px;
     font-weight: 600;
-    color: #253d4e;
+    border: 1px solid #01936c;
+    padding: 5px 10px;
+    border-radius: 5px;
 
     ${mobile({
       fontSize: "14px"
@@ -68,6 +71,9 @@ const Container = styled.div`
   .seeAll .link {
     text-decoration: none;
     color: black;
+  }
+  .seeAllSpan {
+    color: #01936c;
   }
   .wrapper {
     display: flex;

@@ -12,7 +12,7 @@ const HairCareProducts = () => {
           <div className="text">Hair Care <span>and Treatment</span></div>
         </div>
         <div className="seeAll">
-          <span>See More</span>
+          <span>View All</span>
         </div>
       </div>
       <div className="wrapper">
@@ -51,7 +51,7 @@ const Container = styled.div`
   .text{
     font-size: 30px;
     font-weight: 700;
-    color: #253d4e;
+    color: #01936c;
 
     ${mobile({
       fontSize: "20px"
@@ -64,11 +64,16 @@ const Container = styled.div`
     justify-content: center;
     font-size: 16px;
     font-weight: 600;
-    color: #253d4e;
+    border: 1px solid #01936c;
+    padding: 5px 10px;
+    border-radius: 5px;
 
     ${mobile({
       fontSize: "14px"
     })}
+  }
+  .seeAll > span {
+    color: #01936c;
   }
   .wrapper {
     display: flex;

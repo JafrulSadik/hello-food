@@ -5,7 +5,7 @@ import Footer from "../components/Footer";
 import MobileMenu from "../components/MobileMenu";
 import Navbar from "../components/Navbar";
 import ProductCard from "../components/ProductCard";
-import { AllProductItems, GroceryItems } from "../data";
+import { GroceryItems } from "../data";
 import { mobile } from "../responsive";
 
 const ProductDetail = () => {
@@ -163,6 +163,7 @@ const ProductDetailContainer = styled.div`
     width: 110px;
     border: 1px solid #3bb54a;
     display: flex;
+    background-color: #3bb54a;
   }
   .priceChoosen button {
     flex: 1;
@@ -189,7 +190,7 @@ const ProductDetailContainer = styled.div`
     padding: 10px;
     width: 40%;
     border: none;
-    border-radius: 10px;
+    border-radius: 30px;
     color: white;
     cursor: pointer;
     ${mobile({

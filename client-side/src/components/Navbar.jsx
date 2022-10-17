@@ -98,7 +98,7 @@ import { tablet } from "../responsive";
   const NavButton = styled.button`
     width: 140px;
     height: 47px;
-    background-color: #3BB54A;
+    background-color: #01936c;
     color: white;
     border: none;
     border-radius: 0px 8px 8px 0px;
