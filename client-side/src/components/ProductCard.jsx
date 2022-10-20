@@ -34,6 +34,12 @@ const ProductCard = (props) => {
 const Container = styled.div`
   .link {
     text-decoration: none;
+    color: inherit;
+    
+    &:hover {
+      background-color: red;
+      color: green;
+    }
   }
 `
 

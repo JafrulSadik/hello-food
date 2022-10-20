@@ -11,7 +11,7 @@ const Order = () => {
       <Navbar />
       <OrderContainer>
         <div className="header">
-          <Link to="/">
+          <Link className="link" to="/">
             <FontAwesomeIcon icon={faAngleLeft} className="iconLeft" />
           </Link>
           <h3>Check out</h3>
@@ -74,8 +74,7 @@ const Order = () => {
 
 const OrderContainer = styled.div`
   background-color: #eff0f5;
-  margin-bottom: 100px;
-  overflow: hidden;
+  padding-bottom: 100px;
   .header {
     padding: 10px;
     display: flex;
@@ -83,6 +82,9 @@ const OrderContainer = styled.div`
     gap: 20px;
     border-bottom: 1px solid lightgray;
     background-color: #fff;
+  }
+  .header > .link {
+    color: black;
   }
   .header h3 {
     font-weight: 500;

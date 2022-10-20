@@ -57,6 +57,7 @@ const MyOrdersContainer = styled.div`
    font-size: 22px;
    display: flex;
    align-items: center;
+   color: black;
 }
 .product {
     margin: 20px 10px;

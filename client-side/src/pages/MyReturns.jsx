@@ -40,6 +40,7 @@ const ReturnContainer = styled.div`
    font-size: 22px;
    display: flex;
    align-items: center;
+   color: black;
 }
 .mid {
     display: flex;
