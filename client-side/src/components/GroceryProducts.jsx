@@ -11,7 +11,7 @@ const GroceryProducts = () => {
         <div className="name">
           <span className="text">Grocery</span>
         </div>
-        <div className="seeAll">
+        <div className="viewAll">
           <span>View All</span>
         </div>
       </div>
@@ -52,7 +52,7 @@ const Container = styled.div`
     })}
   }
 
-  .seeAll {
+  .viewAll {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -61,13 +61,16 @@ const Container = styled.div`
     border: 1px solid #01936c;
     padding: 5px 10px;
     border-radius: 5px;
-
+    color: #01936c;
+    cursor: pointer;
+    &:hover {
+      background-color: #01936c;
+      color: white;
+      transition: 0.3s;
+    }
     ${mobile({
       fontSize: "14px"
     })}
-  }
-  .seeAll > span {
-    color: #01936c;
   }
   .wrapper {
     display: flex;

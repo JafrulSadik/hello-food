@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { AiOutlineMinus, AiOutlinePlus } from "react-icons/ai";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 import Footer from "../components/Footer";
 import MobileMenu from "../components/MobileMenu";
@@ -66,9 +67,11 @@ const ProductDetail = () => {
                 <button className="addToCart" type="button">
                   Add to cart
                 </button>
-                <button className="buyNow" type="button">
-                  Buy Now
-                </button>
+                <Link to='/order' className="link">
+                  <button className="buyNow" type="button">
+                    Buy Now
+                  </button>
+                </Link>
               </div>
             </div>
           </section>
@@ -95,7 +98,9 @@ const ProductDetail = () => {
             </div>
           </section>
           <section className="bottomSection">
-            <h2><span>You may also like</span></h2>
+            <h2>
+              <span>You may also like</span>
+            </h2>
             <div className="similarProducts">
               {GroceryItems.map((item) => {
                 return <ProductCard item={item} key={item.id} />;
@@ -114,7 +119,7 @@ const ProductDetailContainer = styled.div`
   .wrapper {
     margin: 50px 100px;
     ${mobile({
-      margin : '20px 10px'
+      margin: "20px 10px",
     })}
   }
   .topSection {
@@ -123,23 +128,23 @@ const ProductDetailContainer = styled.div`
     /* height: 500px; */
     background-color: #fff;
     ${mobile({
-      flexDirection : 'column',
-      alignItems : 'flex-start',
-      justifyContent : 'flex-start',
+      flexDirection: "column",
+      alignItems: "flex-start",
+      justifyContent: "flex-start",
     })}
   }
   .topSection .imageDiv {
     flex: 1;
     width: 100%;
-    text-align : center;
+    text-align: center;
     /* border: 1px solid red; */
   }
   .topSection > .imageDiv > img {
     width: 400px;
     height: 400px;
     ${mobile({
-      width : '290px',
-      height : '310px',
+      width: "290px",
+      height: "310px",
     })}
   }
   .topSection .infoDiv {
@@ -149,7 +154,7 @@ const ProductDetailContainer = styled.div`
     gap: 20px;
     padding: 50px;
     ${mobile({
-      padding : '20px 20px'
+      padding: "20px 20px",
     })}
   }
   .topSection > .infoDiv > h3 {
@@ -185,6 +190,9 @@ const ProductDetailContainer = styled.div`
     flex-direction: column;
     gap: 15px;
   }
+  .addAndBuy > .link {
+    text-decoration: none;
+  }
   .addAndBuy button {
     padding: 10px;
     width: 40%;
@@ -193,7 +201,7 @@ const ProductDetailContainer = styled.div`
     color: white;
     cursor: pointer;
     ${mobile({
-      width: '100%'
+      width: "100%",
     })}
   }
   .addAndBuy .addToCart {
@@ -215,8 +223,8 @@ const ProductDetailContainer = styled.div`
     margin: 40px 0;
     padding: 20px;
     ${mobile({
-      margin: '20px 0',
-      padding: '5px 20px'
+      margin: "20px 0",
+      padding: "5px 20px",
     })}
   }
   .midSection h5 {
@@ -232,13 +240,13 @@ const ProductDetailContainer = styled.div`
     flex-direction: column;
     gap: 10px;
     ${mobile({
-      margin : '10px'
+      margin: "10px",
     })}
   }
   .descDiv ul {
     padding: 20px 40px;
     ${mobile({
-      padding: '10px 30px'
+      padding: "10px 30px",
     })}
   }
   .bottomSection > h2 {

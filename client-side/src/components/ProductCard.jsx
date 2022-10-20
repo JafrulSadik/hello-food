@@ -146,7 +146,6 @@ const CardWrapper = styled.div`
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
-    /* border: 1px solid red; */
 
     ${mobile({
       margin: "10px"
@@ -173,7 +172,8 @@ const CardWrapper = styled.div`
     color: #3BB77E;
     background-color: #a1f6ce6c;
     border-radius: 5px;
-    transition: 0.5s;
+    transition: 0.3s;
+    cursor: pointer;
     &:hover{
       background-color: #3BB77E;
       color: white;

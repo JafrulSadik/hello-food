@@ -2,7 +2,7 @@ import React from "react";
 import { AiOutlineRollback, AiOutlineShopping } from "react-icons/ai";
 import { FiHelpCircle } from "react-icons/fi";
 import { HiOutlineNewspaper } from "react-icons/hi";
-import { MdOutlineLocationOn, MdOutlineManageAccounts } from "react-icons/md";
+import { MdOutlineManageAccounts } from "react-icons/md";
 import { RiLogoutBoxLine } from "react-icons/ri";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
@@ -25,23 +25,19 @@ const Account = () => {
             </li>
             <li>
               <AiOutlineRollback className="accountIcon" />
-              <Link className="link">My Returns</Link>
-            </li>
-            <li>
-              <MdOutlineLocationOn className="accountIcon" />
-              <Link className="link">Address</Link>
+              <Link to='/my-returns' className="link">My Returns</Link>
             </li>
             <li>
               <MdOutlineManageAccounts className="accountIcon" />
-              <Link className="link">Account Information</Link>
+              <Link className="link">Manage Profile</Link>
             </li>
             <li>
               <HiOutlineNewspaper className="accountIcon" />
-              <Link className="link">Policies</Link>
+              <Link to='/privacy-policy' className="link">Policies</Link>
             </li>
             <li>
               <FiHelpCircle className="accountIcon" />
-              <Link className="link">Help</Link>
+              <a href="tel:01611456116" className="link">Help</a>
             </li>
             <li>
               <RiLogoutBoxLine className="accountIcon" />
@@ -67,7 +63,7 @@ const AccountContainer = styled.div`
     })}
   }
   .midContainer > ul > li {
-    padding: 12px 16px;
+    padding: 0 0 0 16px;
     display: flex;
     align-items: center;
     gap: 10px;
@@ -82,6 +78,8 @@ const AccountContainer = styled.div`
     color: #474444fa;
     width: 100%;
     padding: 5px 0;
+    height: 100%;
+    padding: 12px 12px;
   }
 `;
 export default Account;

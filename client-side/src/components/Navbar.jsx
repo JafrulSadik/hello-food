@@ -127,11 +127,11 @@ import { tablet } from "../responsive";
 
   `
 
-  const LinkPc = styled.a`
+  const LinkPc = styled(Link)`
     display: flex;
     gap: 8px;
     align-items: center;
-    
+    text-decoration: none;
     padding: 10px 15px;
     font-size: 14px;
     background-color: #f6f6f6;
@@ -185,7 +185,6 @@ import { tablet } from "../responsive";
     display: none;
     gap: 8px;
     align-items: center;
-    
     padding: 10px 15px;
     font-size: 14px;
     background-color: #f6f6f6;
@@ -288,7 +287,7 @@ const Navbar = () => {
           </Form>
 
           <NavLink>
-              <LinkPc>
+              <LinkPc to='/cart'>
                   <Span><FaShoppingCart></FaShoppingCart></Span>
                   <Text>Cart</Text>
               </LinkPc>

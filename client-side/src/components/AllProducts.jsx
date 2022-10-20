@@ -12,9 +12,11 @@ const AllProducts = () => {
         <div className="name">
           <span className="text">All Products</span>
         </div>
-        <div className="seeAll">
-          <Link className="link" to='/categories/allProducts'><span className="seeAllSpan">View All</span></Link>
-        </div>
+        <Link className="link" to='/categories/allProducts'>
+          <div className="viewAll">
+            <span className="seeAllSpan">View All</span>
+          </div>
+        </Link>
       </div>
       <div className="wrapper">
         {AllProductItems.map((item) => (
@@ -54,7 +56,7 @@ const Container = styled.div`
     })}
   }
 
-  .seeAll {
+  .viewAll {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -63,17 +65,19 @@ const Container = styled.div`
     border: 1px solid #01936c;
     padding: 5px 10px;
     border-radius: 5px;
+    color: #01936c;
+    &:hover {
+      background-color: #01936c;
+      color: white;
+      transition: 0.3s;
+    }
 
     ${mobile({
       fontSize: "14px"
     })}
   }
-  .seeAll .link {
+ .link {
     text-decoration: none;
-    color: black;
-  }
-  .seeAllSpan {
-    color: #01936c;
   }
   .wrapper {
     display: flex;
