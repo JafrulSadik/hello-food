@@ -74,12 +74,12 @@ const Order = () => {
                     <h5 className="totalAmount">Total : <span>440 Tk</span></h5>
                 </div>
                 <div className="placeButton">
-                    <span onClick={notify}>Place Order</span>
-                    <ToastContainer />
+                    <button onClick={notify}>Place Order</button>
                 </div>
             </div>
         </div>
       </OrderContainer>
+      <ToastContainer />
     </>
   );
 };
@@ -217,11 +217,12 @@ const OrderContainer = styled.div`
     color: #3bb54a;
     font-size: 18px;
   }
-  .placeButton > span {
-    padding: 8px 15px;
+  .placeButton > button {
+    padding: 9px 16px;
     border-radius: 5px;
     background-color: #3bb54a;
     color: white;
+    border: none;
   }
 
 `;
