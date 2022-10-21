@@ -4,8 +4,19 @@ import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import Navbar from "../components/Navbar";
+import  {toast, ToastContainer }  from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Order = () => {
+  const notify = () => {
+    toast.success('Order Placed Successfully', {
+      position: 'top-right',
+      autoClose: 5000,
+      hideProgressBar: true,
+      closeOnClick: true,
+      theme: "colored"
+    })
+  }
   return (
     <>
       <Navbar />
@@ -63,7 +74,8 @@ const Order = () => {
                     <h5 className="totalAmount">Total : <span>440 Tk</span></h5>
                 </div>
                 <div className="placeButton">
-                    <span>Place Order</span>
+                    <span onClick={notify}>Place Order</span>
+                    <ToastContainer />
                 </div>
             </div>
         </div>

@@ -8,6 +8,8 @@ import Navbar from "../components/Navbar";
 import ProductCard from "../components/ProductCard";
 import { GroceryItems } from "../data";
 import { mobile } from "../responsive";
+import  {toast, ToastContainer }  from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const ProductDetail = () => {
   const [quantity, setQuantity] = useState(1);
@@ -19,8 +21,15 @@ const ProductDetail = () => {
       setQuantity(quantity + 1);
     }
   };
-
-  console.log(quantity);
+  const notify = () => {
+    toast.success('Successfully added to cart', {
+      position: 'top-right',
+      autoClose: 5000,
+      hideProgressBar: true,
+      closeOnClick: true,
+      theme: "light"
+    })
+  }
 
   return (
     <>
@@ -64,7 +73,7 @@ const ProductDetail = () => {
                 </button>
               </div>
               <div className="addAndBuy">
-                <button className="addToCart" type="button">
+                <button onClick={notify} className="addToCart" type="button">
                   Add to cart
                 </button>
                 <Link to='/order' className="link">
@@ -111,6 +120,7 @@ const ProductDetail = () => {
       </ProductDetailContainer>
       <MobileMenu />
       <Footer />
+      <ToastContainer />
     </>
   );
 };
