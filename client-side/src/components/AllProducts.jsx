@@ -20,7 +20,7 @@ const AllProducts = () => {
       </div>
       <div className="wrapper">
         {AllProductItems.map((item) => (
-            <ProductCard item={item} key={item.id}/>
+            <ProductCard item={item} key={item.id} />
         ))}
       </div>
     </Container>

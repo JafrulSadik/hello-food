@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { HairCareItems } from "../data";
 import { mobile } from "../responsive";
@@ -11,9 +12,11 @@ const HairCareProducts = () => {
         <div className="name">
           <div className="text">Hair Care <span>and Treatment</span></div>
         </div>
+        <Link className="link" to='/categories/haircare'>
         <div className="seeAll">
           <span>View All</span>
         </div>
+        </Link>
       </div>
       <div className="wrapper">
         {HairCareItems.map((item, index) => (
@@ -46,6 +49,9 @@ const Container = styled.div`
       marginTop : "0px",
       margin: "20px 20px"
     })}
+  }
+  .header > .link {
+    text-decoration: none;
   }
 
   .text{

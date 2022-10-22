@@ -19,10 +19,10 @@ const Footer = () => {
               <span>Follow Us</span>
             </h4>
             <div className="icons">
-              <a href="...">
+              <a href="/">
                 <FontAwesomeIcon className="facebook" icon={faFacebookF} />
               </a>
-              <a href="...">
+              <a href="/">
                 <AiOutlineYoutube className="youtube" />
               </a>
             </div>
@@ -34,13 +34,13 @@ const Footer = () => {
           </h3>
           <ul>
             <li>
-              <a href="..">About Us</a>
+              <a href="/">About Us</a>
             </li>
             <li>
-              <a href="..">Privacy Policy</a>
+              <a href="/">Privacy Policy</a>
             </li>
             <li>
-              <a href="...">Terms & Condition</a>
+              <a href="/">Terms & Condition</a>
             </li>
           </ul>
         </div>

@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { GroceryItems } from "../data";
 import { mobile } from "../responsive";
@@ -11,13 +12,15 @@ const GroceryProducts = () => {
         <div className="name">
           <span className="text">Grocery</span>
         </div>
-        <div className="viewAll">
-          <span>View All</span>
-        </div>
+        <Link className="link" to='/categories/grocery'>
+          <div className="viewAll">
+            <span>View All</span>
+          </div>
+        </Link>
       </div>
       <div className="wrapper">
         {GroceryItems.map((item, index) => (
-            <ProductCard item={item} key={index}/>
+          <ProductCard item={item} key={index} />
         ))}
       </div>
     </Container>
@@ -25,10 +28,10 @@ const GroceryProducts = () => {
 };
 
 const Container = styled.div`
-    margin: 50px 50px;
-    ${mobile({
-      margin: "0px 5px"
-    })}
+  margin: 50px 50px;
+  ${mobile({
+    margin: "0px 5px",
+  })}
 
   .header {
     display: flex;
@@ -37,18 +40,21 @@ const Container = styled.div`
     margin: 30px 10px;
 
     ${mobile({
-      marginTop : "0px",
-      margin: "20px 20px"
+      marginTop: "0px",
+      margin: "20px 20px",
     })}
   }
+  .header > .link {
+    text-decoration: none;
+  }
 
-  .text{
+  .text {
     font-size: 30px;
     font-weight: 700;
     color: #01936c;
 
     ${mobile({
-      fontSize: "20px"
+      fontSize: "20px",
     })}
   }
 
@@ -69,7 +75,7 @@ const Container = styled.div`
       transition: 0.3s;
     }
     ${mobile({
-      fontSize: "14px"
+      fontSize: "14px",
     })}
   }
   .wrapper {
@@ -82,8 +88,8 @@ const Container = styled.div`
     gap: 5px;
 
     ${mobile({
-      justifyContent : "space-evenly",
-      gap: "15px 0px"
+      justifyContent: "space-evenly",
+      gap: "15px 0px",
     })}
   }
 `;

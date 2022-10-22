@@ -1,5 +1,5 @@
 import { Route, Routes } from "react-router-dom";
-import "./App.css";
+import styled from "styled-components";
 import Account from "./pages/Account";
 import Cart from "./pages/Cart";
 import Home from "./pages/Home";
@@ -13,6 +13,7 @@ import ProductDetail from "./pages/ProductDetail";
 import Register from "./pages/Register";
 const App = () => {
   return (
+    <AppContainer >
     <Routes>
       <Route exact path="/" element={<Home />} />
       <Route path="/login" element={<Login />} />
@@ -26,7 +27,12 @@ const App = () => {
       <Route path="/cart" element={<Cart />} />
       <Route path="/order" element={<Order />} />
     </Routes>
+    </AppContainer>
   );
 };
+
+const AppContainer = styled.div`
+  -webkit-tap-highlight-color: transparent;
+`
 
 export default App;

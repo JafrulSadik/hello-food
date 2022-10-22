@@ -45,13 +45,15 @@ const Card = styled(Link)`
   height: 160px;
   width: 200px;
   flex-basis: 150px;
-  background-color: #${(props) => props.bg};
+  /* background-color: #${(props) => props.bg}; */
   justify-content: center;
   align-items: center;
   border-radius: 10px;
+  background-color: #fff;
   cursor: pointer;
-  border: 2px solid #f5f5f5;
+  /* border: 2px solid #f5f5f5; */
   text-decoration: none;
+  box-shadow: 0 0 15px #aca7a715;
   color: #01936c;
 
   &:hover{
