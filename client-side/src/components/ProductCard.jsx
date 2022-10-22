@@ -113,9 +113,9 @@ const CardWrapper = styled.div`
       transition: 1s;
 
       ${mobile({
-        height: "112px",
-        width: "112px",
-        transition: "1s",
+        height: "122px",
+        width: "132px",
+        transition: "0.3s",
       })}
     }
 
