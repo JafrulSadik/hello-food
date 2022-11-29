@@ -8,7 +8,6 @@ import { tablet } from "../responsive";
 
 const Wrapper = styled.div`
     display: none;
-    position: relative;
     width: 100vw;
     height: 60px;
     background-color: #fff;
