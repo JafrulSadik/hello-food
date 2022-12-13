@@ -98,7 +98,7 @@ import { tablet } from "../responsive";
   const NavButton = styled.button`
     width: 140px;
     height: 47px;
-    background-color: #01936c;
+    background-color: #3BB77E;
     color: white;
     border: none;
     border-radius: 0px 8px 8px 0px;
@@ -127,11 +127,11 @@ import { tablet } from "../responsive";
 
   `
 
-  const LinkPc = styled(Link)`
+  const LinkPc = styled.a`
     display: flex;
     gap: 8px;
     align-items: center;
-    text-decoration: none;
+    
     padding: 10px 15px;
     font-size: 14px;
     background-color: #f6f6f6;
@@ -185,6 +185,7 @@ import { tablet } from "../responsive";
     display: none;
     gap: 8px;
     align-items: center;
+    
     padding: 10px 15px;
     font-size: 14px;
     background-color: #f6f6f6;
@@ -271,8 +272,8 @@ const Navbar = () => {
 
   return (
       <Wrapper>
-          <Logo href='/'>
-              <LogoLink to='/'>
+          <Logo href='/#'>
+              <LogoLink>
                 <LogoImage src={logo}/>
               </LogoLink>
               
@@ -287,7 +288,7 @@ const Navbar = () => {
           </Form>
 
           <NavLink>
-              <LinkPc to='/cart'>
+              <LinkPc>
                   <Span><FaShoppingCart></FaShoppingCart></Span>
                   <Text>Cart</Text>
               </LinkPc>

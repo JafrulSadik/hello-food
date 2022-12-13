@@ -16,11 +16,11 @@ const Register = () => {
           <form className="loginForm">
             <h2>Create Account</h2>
             <label for="email">Name</label>
-            <input type="text" name="name" placeholder="Name" required />
+            <input type="email" name="email" placeholder="Name" required />
             <label for="email">Email</label>
             <input type="email" name="email" placeholder="Email" required />
             <label for="password">Password</label>
-            <input type="password" name="password" placeholder="Password" required />
+            <input type="email" name="email" placeholder="Password" required />
             <label for="password">Confirm Password</label>
             <input
               type="password"
@@ -99,7 +99,7 @@ const Container = styled.div`
   }
   .loginForm button {
     padding: 8px 0;
-    background-color: #01936c;
+    background-color: #10918a;
     border: none;
     color: white;
     border-radius: 5px;

@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import styled from "styled-components";
 import grocery from "../images/categories/gorcery-removebg-preview.png";
 import hairCare from "../images/categories/Hair_Care_2-removebg-preview.png";
@@ -39,7 +38,7 @@ const Wrapper = styled.div`
     margin : "0px 10px"
   })}
 `
-const Card = styled(Link)`
+const Card = styled.div`
   display: flex;
   flex-direction: column;
   height: 160px;
@@ -49,15 +48,11 @@ const Card = styled(Link)`
   justify-content: center;
   align-items: center;
   border-radius: 10px;
-  /* background-color: #fff; */
   cursor: pointer;
   border: 2px solid #f5f5f5;
-  text-decoration: none;
-  box-shadow: 0 0 15px #aca7a715;
-  color: #01936c;
 
   &:hover{
-    /* border: 2px solid #14a7761f; */
+    border: 2px solid #14a7761f;
     color:  #01936c;
   }
 
@@ -112,15 +107,15 @@ const Categories = () => {
   return (
     <Container>
       <Wrapper>
-          <Card bg="ECFFEC" to='/categories/allProducts'>
-            <ImageDiv>
-              <Image src={grocery} />
-            </ImageDiv>
-            <TextDiv>
-              <Text>Grocery</Text>
-            </TextDiv>
-          </Card>
-        <Card bg="feefead2" to='/categories/hairCare'>
+        <Card bg="ECFFEC">
+          <ImageDiv>
+            <Image src={grocery} />
+          </ImageDiv>
+          <TextDiv>
+            <Text>Grocery</Text>
+          </TextDiv>
+        </Card>
+        <Card bg="feefead2">
           <ImageDiv>
             <Image src={hairCare} />
           </ImageDiv>
@@ -128,7 +123,7 @@ const Categories = () => {
             <Text>Hair Care</Text>
           </TextDiv>
         </Card>
-        <Card bg="F2FCE4" to='/categories/medicinalHerbs'>
+        <Card bg="F2FCE4">
           <ImageDiv>
             <Image src={medicialHerbs} />
           </ImageDiv>
@@ -136,7 +131,7 @@ const Categories = () => {
             <Text>Medicinal Herbs</Text>
           </TextDiv>
         </Card>
-        <Card bg="FFF3FF" to='/categories/skinCare'>
+        <Card bg="FFF3FF">
           <ImageDiv>
             <Image src={skinCare} />
           </ImageDiv>

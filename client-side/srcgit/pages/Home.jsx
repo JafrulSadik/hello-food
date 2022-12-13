@@ -1,5 +1,4 @@
 import React from "react";
-import styled from "styled-components";
 import AllProducts from "../components/AllProducts";
 import Categories from "../components/Categories";
 import Footer from "../components/Footer";
@@ -14,7 +13,7 @@ import Slider from "../components/Slider";
 
 const Home = () => {
   return (
-    <HomeContainer>
+    <div style={{background: "#fcf8f8"}}>
       <Navbar/>
       <Slider/>
       <MobileMenu/>
@@ -25,12 +24,9 @@ const Home = () => {
       <MedicinalHerbsProducts/>
       <SkinCareProducts/>
       <Footer/>
-    </HomeContainer>
+    </div>
   );
-};
 
-const HomeContainer = styled.div`
-  background-color: #fcf8f8;
-`
+};
 
 export default Home;

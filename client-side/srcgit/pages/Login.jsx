@@ -1,35 +1,36 @@
 import { faFacebookF, faGoogle } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
+import { Link } from 'react-router-dom';
 import styled from "styled-components";
 import Footer from "../components/Footer";
 import MobileMenu from "../components/MobileMenu";
 import Navbar from "../components/Navbar";
 import { mobile } from "../responsive";
 
-const Register = () => {
+const Login = () => {
   return (
     <>
       <Navbar />
       <Container>
         <div className="wrapper">
           <form className="loginForm">
-            <h2>Create Account</h2>
-            <label for="email">Name</label>
-            <input type="text" name="name" placeholder="Name" required />
+            <h1>Login</h1>
             <label for="email">Email</label>
             <input type="email" name="email" placeholder="Email" required />
             <label for="password">Password</label>
-            <input type="password" name="password" placeholder="Password" required />
-            <label for="password">Confirm Password</label>
             <input
               type="password"
               name="password"
               placeholder="Password"
               required
             />
-            <button>Register</button>
-            <p>Or Join with</p>
+            <a href="...">Forgot Password?</a>
+            <button>Login</button>
+            <div className="signup">
+              <p>Don't have an account? <Link to='/register'>Sign Up</Link> </p>
+              <p>Or Login Using</p>
+            </div>
             <div className="icons">
               <a href="/">
                 <FontAwesomeIcon className="facebook" icon={faFacebookF} />
@@ -68,10 +69,10 @@ const Container = styled.div`
     margin: 50px 0;
     border: 1px solid #a19c9c49;
     ${mobile({
-      width: "70%",
+      'width': '70%'
     })}
   }
-  .loginForm h2 {
+  .loginForm h1 {
     text-align: center;
     margin: 20 0;
     padding: 10px;
@@ -93,13 +94,18 @@ const Container = styled.div`
     font-size: 15px;
     color: black;
   }
-  .loginForm p {
+  .loginForm>.signup {
     text-align: center;
     margin: 10px 0;
+    font-size: 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px 0;
   }
+
   .loginForm button {
     padding: 8px 0;
-    background-color: #01936c;
+    background-color: #3BB77E;
     border: none;
     color: white;
     border-radius: 5px;
@@ -119,21 +125,21 @@ const Container = styled.div`
     top: 0;
     &:hover {
       top: -2px;
-      transition: 0.3s;
+      transition: .3s;
     }
   }
   .icons .facebook {
     border-radius: 50%;
-    background: #3b5998;
+    background: #3B5998;
     color: white;
     padding: 10px 13px;
   }
   .icons .google {
     border-radius: 50%;
-    background: #e62833;
+    background: #E62833;
     color: white;
     padding: 10px;
   }
 `;
 
-export default Register;
+export default Login;

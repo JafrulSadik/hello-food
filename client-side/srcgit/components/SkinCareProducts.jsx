@@ -1,26 +1,23 @@
 import React from "react";
-import { Link } from 'react-router-dom';
 import styled from "styled-components";
-import { AllProductItems } from "../data";
+import { SkinCareItems } from "../data";
 import { mobile } from "../responsive";
 import ProductCard from "./ProductCard";
 
-const AllProducts = () => {
+const SkinCareProducts = () => {
   return (
     <Container>
       <div className="header">
         <div className="name">
-          <span className="text">All Products</span>
+          <div className="text">Skin Care <span> - Face Mask &‌ Packs</span></div>
         </div>
-        <Link className="link" to='/categories/allProducts'>
-          <div className="viewAll">
-            <span className="seeAllSpan">View All</span>
-          </div>
-        </Link>
+        <div className="seeAll">
+          <span>See More</span>
+        </div>
       </div>
       <div className="wrapper">
-        {AllProductItems.map((item) => (
-            <ProductCard item={item} key={item.id} />
+        {SkinCareItems.map((item, index) => (
+            <ProductCard item={item} key={index} />
         ))}
       </div>
     </Container>
@@ -48,36 +45,28 @@ const Container = styled.div`
   .text{
     font-size: 30px;
     font-weight: 700;
-    color: #01936c;
-    /* border-bottom: 1px solid #01936c; */
+    color: #253d4e;
 
     ${mobile({
       fontSize: "20px"
     })}
   }
-
-  .viewAll {
+  .text > span {
+    ${mobile({
+      display: "none"
+    })}
+  }
+  .seeAll {
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 16px;
     font-weight: 600;
-    border: 1px solid #01936c;
-    padding: 5px 10px;
-    border-radius: 5px;
-    color: #01936c;
-    &:hover {
-      background-color: #01936c;
-      color: white;
-      transition: 0.3s;
-    }
+    color: #253d4e;
 
     ${mobile({
       fontSize: "14px"
     })}
-  }
- .link {
-    text-decoration: none;
   }
   .wrapper {
     display: flex;
@@ -87,12 +76,7 @@ const Container = styled.div`
     flex-wrap: wrap;
     flex-grow: 1;
     gap: 5px;
-
-    ${mobile({
-      justifyContent : "space-evenly",
-      gap: "15px 0px"
-    })}
   }
 `;
 
-export default AllProducts;
+export default SkinCareProducts;

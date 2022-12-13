@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { MedicinalHerbsItems } from "../data";
 import { mobile } from "../responsive";
@@ -11,9 +12,11 @@ const MedicinalHerbsProducts = () => {
         <div className="name">
           <span className="text">Medicinal Herbs</span>
         </div>
+        <Link className="link" to='/categories/medicinal-herbs'>
         <div className="seeAll">
-          <span>See More</span>
+          <span>View All</span>
         </div>
+        </Link>
       </div>
       <div className="wrapper">
         {MedicinalHerbsItems.map((item, index) => (
@@ -30,6 +33,12 @@ const Container = styled.div`
       margin: "0px 5px"
     })}
 
+.text>span {
+      ${mobile({
+        display : 'none'
+      })}
+    }
+
   .header {
     display: flex;
     justify-content: space-between;
@@ -41,11 +50,14 @@ const Container = styled.div`
       margin: "20px 20px"
     })}
   }
+  .header > .link {
+    text-decoration: none;
+  }
 
   .text{
     font-size: 30px;
     font-weight: 700;
-    color: #253d4e;
+    color: #01936c;
 
     ${mobile({
       fontSize: "20px"
@@ -58,7 +70,16 @@ const Container = styled.div`
     justify-content: center;
     font-size: 16px;
     font-weight: 600;
-    color: #253d4e;
+    border: 1px solid #01936c;
+    padding: 5px 10px;
+    border-radius: 5px;
+    color: #01936c;
+    cursor: pointer;
+    &:hover {
+      background-color: #01936c;
+      color: white;
+      transition: 0.3s;
+    }
 
     ${mobile({
       fontSize: "14px"
@@ -72,6 +93,11 @@ const Container = styled.div`
     flex-wrap: wrap;
     flex-grow: 1;
     gap: 5px;
+
+    ${mobile({
+      justifyContent : "space-evenly",
+      gap: "15px 0px"
+    })}
   }
 `;
 

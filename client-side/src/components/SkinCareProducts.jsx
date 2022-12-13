@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { SkinCareItems } from "../data";
 import { mobile } from "../responsive";
@@ -9,15 +10,19 @@ const SkinCareProducts = () => {
     <Container>
       <div className="header">
         <div className="name">
-          <div className="text">Skin Care <span> - Face Mask &‌ Packs</span></div>
+          <div className="text">
+            Skin Care <span> - Face Mask &‌ Packs</span>
+          </div>
         </div>
+        <Link className="link" to='/categories/skin-care'>
         <div className="seeAll">
-          <span>See More</span>
+          <span>View All</span>
         </div>
+        </Link>
       </div>
       <div className="wrapper">
         {SkinCareItems.map((item, index) => (
-            <ProductCard item={item} key={index} />
+          <ProductCard item={item} key={index} />
         ))}
       </div>
     </Container>
@@ -25,10 +30,16 @@ const SkinCareProducts = () => {
 };
 
 const Container = styled.div`
-    margin: 50px 50px;
+  margin: 50px 50px;
+  ${mobile({
+    margin: "0px 5px",
+  })}
+
+  .text>span {
     ${mobile({
-      margin: "0px 5px"
+      display: "none",
     })}
+  }
 
   .header {
     display: flex;
@@ -37,35 +48,43 @@ const Container = styled.div`
     margin: 30px 10px;
 
     ${mobile({
-      marginTop : "0px",
-      margin: "20px 20px"
+      marginTop: "0px",
+      margin: "20px 20px",
     })}
   }
+  .header > .link {
+    text-decoration: none;
+  }
 
-  .text{
+  .text {
     font-size: 30px;
     font-weight: 700;
-    color: #253d4e;
+    color: #01936c;
 
     ${mobile({
-      fontSize: "20px"
+      fontSize: "20px",
     })}
   }
-  .text > span {
-    ${mobile({
-      display: "none"
-    })}
-  }
+
   .seeAll {
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 16px;
     font-weight: 600;
-    color: #253d4e;
+    border: 1px solid #01936c;
+    padding: 5px 10px;
+    border-radius: 5px;
+    color: #01936c;
+    cursor: pointer;
+    &:hover {
+      background-color: #01936c;
+      color: white;
+      transition: 0.3s;
+    }
 
     ${mobile({
-      fontSize: "14px"
+      fontSize: "14px",
     })}
   }
   .wrapper {
@@ -76,6 +95,11 @@ const Container = styled.div`
     flex-wrap: wrap;
     flex-grow: 1;
     gap: 5px;
+
+    ${mobile({
+      justifyContent: "space-evenly",
+      gap: "15px 0px",
+    })}
   }
 `;
 
