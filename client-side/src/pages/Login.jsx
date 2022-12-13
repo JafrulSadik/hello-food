@@ -1,6 +1,7 @@
 import { faFacebookF, faGoogle } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
+import { useState } from "react";
 import { Link } from 'react-router-dom';
 import styled from "styled-components";
 import Footer from "../components/Footer";
@@ -9,6 +10,7 @@ import Navbar from "../components/Navbar";
 import { mobile } from "../responsive";
 
 const Login = () => {
+  const [valid, setValid] = useState(false)
   return (
     <>
       <Navbar />
@@ -25,10 +27,13 @@ const Login = () => {
               placeholder="Password"
               required
             />
+            {
+              valid && <span>Invalid Email or Password!</span>
+            }
             <a href="...">Forgot Password?</a>
             <button>Login</button>
             <div className="signup">
-              <p>Don't have an account? <Link to='/register'>Sign Up</Link> </p>
+              <p>Don't have an account? <Link className="signup_link" to='/register'>SignUp</Link> </p>
               <p>Or Login Using</p>
             </div>
             <div className="icons">
@@ -78,7 +83,7 @@ const Container = styled.div`
     padding: 10px;
   }
   .loginForm label {
-    font-size: 18px;
+    font-size: 15px;
   }
   .loginForm input {
     font-size: 14px;
@@ -91,8 +96,8 @@ const Container = styled.div`
     }
   }
   .loginForm > a {
-    font-size: 15px;
-    color: black;
+    font-size: 12px;
+    color: #01936c;
   }
   .loginForm>.signup {
     text-align: center;
@@ -111,6 +116,20 @@ const Container = styled.div`
     border-radius: 5px;
     cursor: pointer;
     font-size: 18px;
+    &:hover{
+      background-color: #077558;
+    }
+  }
+  .loginForm > span {
+    font-size: 14px;
+    color: red;
+  }
+  .signup > p {
+    font-size: 15px;
+  }
+  .signup_link {
+    text-decoration: none;
+    color: #01936c;
   }
   .icons {
     display: flex;

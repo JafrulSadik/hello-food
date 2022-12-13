@@ -1,5 +1,6 @@
-import { Route, Routes } from "react-router-dom";
+import { Outlet, Route, Routes } from "react-router-dom";
 import styled from "styled-components";
+import AdminHome from "./admin/pages/AdminHome";
 import Account from "./pages/Account";
 import Cart from "./pages/Cart";
 import Home from "./pages/Home";
@@ -11,7 +12,19 @@ import PrivacyPolicy from "./pages/PrivacyPolicy";
 import Prodcuts from "./pages/Prodcuts";
 import ProductDetail from "./pages/ProductDetail";
 import Register from "./pages/Register";
+import Sidebar from './admin/components/Sidebar'
+import AdminProducts from "./admin/pages/AdminProducts";
+import Orders from "./admin/pages/Orders";
+import Users from "./admin/pages/Users";
 const App = () => {
+  const AdminLayout = ({children}) => (
+    <>
+      <Sidebar>
+        {children}
+        <Outlet />
+      </Sidebar>
+    </>
+  )
   return (
     <AppContainer >
     <Routes>
@@ -26,7 +39,14 @@ const App = () => {
       <Route path="/privacy-policy" element={<PrivacyPolicy />} />
       <Route path="/cart" element={<Cart />} />
       <Route path="/order" element={<Order />} />
+      <Route element={<AdminLayout />}>
+        <Route path="/admin" element={<AdminHome />} />
+        <Route path="/admin-products" element={<AdminProducts />} />
+        <Route path="/orders" element={<Orders />} />
+        <Route path="/users" element={<Users />} />
+      </Route>
     </Routes>
+    
     </AppContainer>
   );
 };
