@@ -1,7 +1,7 @@
 import { faFacebookF, faGoogle } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React from "react";
-import { useState } from "react";
+import axios from "axios";
+import React, { useState } from "react";
 import { Link } from 'react-router-dom';
 import styled from "styled-components";
 import Footer from "../components/Footer";
@@ -10,7 +10,36 @@ import Navbar from "../components/Navbar";
 import { mobile } from "../responsive";
 
 const Login = () => {
-  const [valid, setValid] = useState(false)
+  const [valid, setValid] = useState(false);
+  const [input, setInput] = useState("");
+  const [password, setPassword] = useState("");
+
+
+  const BASE_URL = "http://localhost:5000";
+
+  const userRequest = axios.create({
+      baseURL: BASE_URL,
+      withCredentials: "include",
+  });
+
+
+  const handleLogin = async () => {
+
+    userRequest.post('/api/login', {
+      input : input,
+      password : password
+    })
+    .then(function (res) {
+      console.log(res.data);
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+  
+  }
+
+
+
   return (
     <>
       <Navbar />
@@ -18,10 +47,11 @@ const Login = () => {
         <div className="wrapper">
           <form className="loginForm">
             <h1>Login</h1>
-            <label for="email">Email</label>
-            <input type="email" name="email" placeholder="Email" required />
-            <label for="password">Password</label>
+            <label htmlFor="email">Email</label>
+            <input onChange={(e) => setInput(e.target.value)} type="email" name="email" placeholder="Email" required />
+            <label htmlFor="password">Password</label>
             <input
+            onChange={(e) => setPassword(e.target.value)}
               type="password"
               name="password"
               placeholder="Password"
@@ -31,7 +61,7 @@ const Login = () => {
               valid && <span>Invalid Email or Password!</span>
             }
             <a href="...">Forgot Password?</a>
-            <button>Login</button>
+            <button onClick={handleLogin}>Login</button>
             <div className="signup">
               <p>Don't have an account? <Link className="signup_link" to='/register'>SignUp</Link> </p>
               <p>Or Login Using</p>

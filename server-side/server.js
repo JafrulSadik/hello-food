@@ -1,9 +1,20 @@
 const express = require("express");
-const authRoute = require("./routes/auth");
+const authRoute = require("./routes/authRoute");
 const { default: mongoose } = require("mongoose");
+const categoryRoute = require("./routes/categoryRoute");
+const productRoute = require("./routes/productRoute");
 const dotenv = require("dotenv").config();
 const app = express();
 const bcrypt = require('bcrypt');
+const cors = require("cors");
+const cookieParser = require("cookie-parser");
+
+app.use(cors({
+    credentials: true,
+    origin: 'http://localhost:3000'
+}));
+
+app.use(cookieParser());
 
 
 const PORT = process.env.PORT || 5000;
@@ -19,7 +30,9 @@ const connect = () => {
 
 
 app.use(express.json());
-app.use("/api/", authRoute);
+app.use("/api", authRoute);
+app.use("/api/category", categoryRoute)
+app.use("/api/product", productRoute)
 
 
 app.use((err, req, res, next) => {

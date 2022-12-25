@@ -1,18 +1,9 @@
 const mongoose = require("mongoose");
 
 const UserSchema = new mongoose.Schema({
-    username: {
+    name: {
         type: String,
-        required: true,
-        unique: true,
-    },
-    fname: {
-        type: String,
-        required: true,
-    },
-    lname: {
-        type: String,
-        required: true,
+        required: true
     },
     email: {
         type: String,
@@ -32,8 +23,15 @@ const UserSchema = new mongoose.Schema({
     img: {
         type: String,
     },
-    order: {
+    orders: {
         type: Array,
+    },
+    isAdmin: {
+        type: Boolean,
+        default: 0
+    },
+    addToCart:{
+        type: Array
     }
 }, {timestamps: true}
 );

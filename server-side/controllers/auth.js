@@ -20,6 +20,7 @@ const signup = async (req, res, next) =>{
 }
 
 const login = async (req, res, next) => {
+
     try{
         const user = await User.findOne({$or: [{email: req.body.input},{username:req.body.input}]});
         if(!user){
@@ -36,9 +37,12 @@ const login = async (req, res, next) => {
         const token = jwt.sign({id:user._id}, process.env.JWT_SECRET)
         const {password, ...others} = user._doc;
 
-        res.cookie("access_token", token,{
-            httpOnly: true
-        }).status(200).json(others)
+        res
+        .cookie("access_token", token, {
+          httpOnly: true,
+        })
+        .status(200)
+        .json(others);
 
     } catch (err){
         next(err);
