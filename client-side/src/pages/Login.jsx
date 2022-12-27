@@ -1,8 +1,8 @@
 import { faFacebookF, faGoogle } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React from "react";
-import { useState } from "react";
-import { Link } from 'react-router-dom';
+import axios from "axios";
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 import Footer from "../components/Footer";
 import MobileMenu from "../components/MobileMenu";
@@ -10,7 +10,22 @@ import Navbar from "../components/Navbar";
 import { mobile } from "../responsive";
 
 const Login = () => {
-  const [valid, setValid] = useState(false)
+  const [valid, setValid] = useState(false);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    try {
+      const res = await axios.post("http://localhost:5000/api/login",
+    {input: email, password : password}
+    )
+    } catch(error) {
+      console.log(error);
+    }
+
+  };
+
   return (
     <>
       <Navbar />
@@ -19,21 +34,31 @@ const Login = () => {
           <form className="loginForm">
             <h1>Login</h1>
             <label for="email">Email</label>
-            <input type="email" name="email" placeholder="Email" required />
+            <input
+              type="email"
+              name="email"
+              placeholder="Email"
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            />
             <label for="password">Password</label>
             <input
               type="password"
               name="password"
               placeholder="Password"
+              onChange={(e) => setPassword(e.target.value)}
               required
             />
-            {
-              valid && <span>Invalid Email or Password!</span>
-            }
-            <a href="...">Forgot Password?</a>
-            <button>Login</button>
+            {valid && <span>Invalid Email or Password!</span>}
+            <Link className="forgot_password" to="/login">Forgot Password?</Link>
+            <button onClick={handleLogin}>Login</button>
             <div className="signup">
-              <p>Don't have an account? <Link className="signup_link" to='/register'>SignUp</Link> </p>
+              <p>
+                Don't have an account?{" "}
+                <Link className="signup_link" to="/register">
+                  SignUp
+                </Link>{" "}
+              </p>
               <p>Or Login Using</p>
             </div>
             <div className="icons">
@@ -74,7 +99,7 @@ const Container = styled.div`
     margin: 50px 0;
     border: 1px solid #a19c9c49;
     ${mobile({
-      'width': '70%'
+      width: "70%",
     })}
   }
   .loginForm h1 {
@@ -99,7 +124,7 @@ const Container = styled.div`
     font-size: 12px;
     color: #01936c;
   }
-  .loginForm>.signup {
+  .loginForm > .signup {
     text-align: center;
     margin: 10px 0;
     font-size: 14px;
@@ -116,7 +141,7 @@ const Container = styled.div`
     border-radius: 5px;
     cursor: pointer;
     font-size: 18px;
-    &:hover{
+    &:hover {
       background-color: #077558;
     }
   }
@@ -144,18 +169,18 @@ const Container = styled.div`
     top: 0;
     &:hover {
       top: -2px;
-      transition: .3s;
+      transition: 0.3s;
     }
   }
   .icons .facebook {
     border-radius: 50%;
-    background: #3B5998;
+    background: #3b5998;
     color: white;
     padding: 10px 13px;
   }
   .icons .google {
     border-radius: 50%;
-    background: #E62833;
+    background: #e62833;
     color: white;
     padding: 10px;
   }

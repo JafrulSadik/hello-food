@@ -1,34 +1,87 @@
 import { faFacebookF, faGoogle } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import Footer from "../components/Footer";
 import MobileMenu from "../components/MobileMenu";
 import Navbar from "../components/Navbar";
 import { mobile } from "../responsive";
+import { useDispatch, useSelector } from "react-redux";
+import { createUser } from "../redux/userRedux";
+import Spinner from "../components/Spinner";
+
 
 const Register = () => {
+  const [name, setName] = useState("");
+  const [email, setEamil] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [emailfocused, setEmailFocused] = useState(false)
+  const [passwordfocused, setPasswordFocused] = useState(false)
+  const [confirmpasswordfocused, setConfirmPasswordFocused] = useState(false)
+  const dispatch = useDispatch()
+  const {success, pending, error} = useSelector(state => state.user)
+
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    dispatch(createUser({name, email, password}))
+
+  }
+
+
+
   return (
     <>
       <Navbar />
       <Container>
         <div className="wrapper">
-          <form className="loginForm">
+          
+          <form className="loginForm" onSubmit={handleSubmit}>
             <h2>Create Account</h2>
-            <label for="email">Name</label>
-            <input type="text" name="name" placeholder="Name" required />
-            <label for="email">Email</label>
-            <input type="email" name="email" placeholder="Email" required />
-            <label for="password">Password</label>
-            <input type="password" name="password" placeholder="Password" required />
-            <label for="password">Confirm Password</label>
+            <label>Name</label>
+            <input
+              type="text"
+              name="name"
+              placeholder="Name"
+              onChange={(e) => setName(e.target.value)}
+            />
+            <label>Email</label>
+            <input
+              type="email"
+              name="email"
+              placeholder="Email"
+              onBlur={() => setEmailFocused(true)}
+              emailfocused={emailfocused.toString()}
+              onChange={(e) => setEamil(e.target.value)}
+              required
+            />
+            <span className="email_span">Please provide a valid email address</span>
+            <label htmlFor="password">Password</label>
+            <input
+              type="password"
+              name="password"
+              onBlur={() => setPasswordFocused(true)}
+              passwordfocused={passwordfocused.toString()}
+              onChange={(e) => setPassword(e.target.value)}
+              pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$"
+              placeholder="Password"
+              required
+            />
+            <span className="password_span">Password should be at least 8 charector</span>
+            <label htmlFor="password">Confirm Password</label>
             <input
               type="password"
               name="password"
               placeholder="Password"
+              pattern={password}
+              confirmpasswordfocused={confirmpasswordfocused.toString()}
+              onBlur={()=> setConfirmPasswordFocused(true)}
+              onChange={(e) => setConfirmPassword(e.target.value)}
               required
             />
-            <button>Register</button>
+            <span className="confirm_span">Password doesn't match</span>
+            <button type="submit">Register</button>
             <p>Or Join with</p>
             <div className="icons">
               <a href="/">
@@ -41,6 +94,7 @@ const Register = () => {
           </form>
         </div>
       </Container>
+      {pending && <Spinner />}
       <MobileMenu />
       <Footer />
     </>
@@ -79,7 +133,7 @@ const Container = styled.div`
   .loginForm label {
     font-size: 18px;
   }
-  .loginForm input {
+  input {
     font-size: 14px;
     border: 1px solid lightgray;
     border-radius: 5px;
@@ -97,7 +151,7 @@ const Container = styled.div`
     text-align: center;
     margin: 10px 0;
   }
-  .loginForm button {
+  .loginForm > button {
     padding: 8px 0;
     background-color: #01936c;
     border: none;
@@ -105,6 +159,21 @@ const Container = styled.div`
     border-radius: 5px;
     cursor: pointer;
     font-size: 18px;
+  }
+  .loginForm > span {
+    font-size: 12px;
+    padding: 3px;
+    color: red;
+    display: none;
+  }
+  input:invalid[emailfocused='true'] ~ .email_span {
+    display: block;
+  }
+  input:invalid[passwordfocused='true'] ~ .password_span {
+    display: block;
+  }
+  input:invalid[confirmpasswordfocused='true'] ~ .confirm_span {
+    display: block;
   }
   .icons {
     display: flex;
@@ -134,6 +203,7 @@ const Container = styled.div`
     color: white;
     padding: 10px;
   }
+  
 `;
 
 export default Register;
