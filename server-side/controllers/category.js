@@ -63,7 +63,6 @@ const updateCategory = async (req, res, next) => {
 const getCatProduct = async (req, res, next) => {
     try{
 
-        console.log(req.params.categoryUrl);
         const category = await Category.findOne({categoryUrl : req.params.categoryUrl}).populate('products');
 
         res.status(200).json(category.products);

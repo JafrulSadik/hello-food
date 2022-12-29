@@ -27,7 +27,7 @@ const login = async (req, res, next) => {
 
     try{
         const user = await User.findOne({email: req.body.email});
-        
+
         if(!user){
             return next(createError(404, "User name or Password does not matched."));
         }
@@ -56,10 +56,16 @@ const login = async (req, res, next) => {
 
 
 const logout = async (req, res, next) => {
-    res
-    .cookie("access_token", "")
-    .status(200)
-    .json("Logout successfully.");
+    try {
+        res.cookie("access_token", "", {
+            httpOnly: true
+        })
+        .status(200)
+        .json("Logout successfully.");   
+    } catch (error) {
+        next(error)
+    }
+    
 }
 
 module.exports = {
