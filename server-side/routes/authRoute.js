@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { signup, login } = require('../controllers/auth');
+const { signup, login, logout } = require('../controllers/auth');
 
 
 
@@ -11,5 +11,8 @@ router.post("/login", login)
 
 //google auth
 router.post("/google", )
+
+//logout
+router.get("/logout", logout)
 
 module.exports = router;
