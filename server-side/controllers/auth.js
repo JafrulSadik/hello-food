@@ -5,6 +5,10 @@ const User = require("../models/User");
 
 const signup = async (req, res, next) =>{
     try{
+        const verifyEmail = await User.findOne({"email" : req.body.email}).count();
+        if(verifyEmail){
+            return next(createError(409, "Email already exist!!!"))
+        }
         const saltRounds = 10;
         const salt = bcrypt.genSaltSync(saltRounds);
         const hash = bcrypt.hashSync(req.body.password, salt);
@@ -22,7 +26,8 @@ const signup = async (req, res, next) =>{
 const login = async (req, res, next) => {
 
     try{
-        const user = await User.findOne({$or: [{email: req.body.input},{username:req.body.input}]});
+        const user = await User.findOne({email: req.body.email});
+        
         if(!user){
             return next(createError(404, "User name or Password does not matched."));
         }
@@ -49,7 +54,16 @@ const login = async (req, res, next) => {
     }
 }
 
+
+const logout = async (req, res, next) => {
+    res
+    .cookie("access_token", "")
+    .status(200)
+    .json("Logout successfully.");
+}
+
 module.exports = {
     signup,
-    login
+    login,
+    logout
 }
