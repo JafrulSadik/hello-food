@@ -2,9 +2,11 @@ import React, { useState } from 'react';
 import { BiSearch } from "react-icons/bi";
 import { CgLogIn, CgLogOut, CgProfile } from "react-icons/cg";
 import { FaShoppingCart } from "react-icons/fa";
+import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import styled from "styled-components";
 import logo from "../images/hello_food.png";
+import { logoutUser } from '../redux/userRedux';
 import { tablet } from "../responsive";
 
 
@@ -249,6 +251,7 @@ const OptionLink = styled.a`
   padding: 10px 15px;
   text-decoration: none;
   color: gray;
+  cursor: pointer;
 `
 
 
@@ -258,8 +261,9 @@ const OptionLink = styled.a`
 const Navbar = () => {
 
   const [active, setActive] = useState({display : "none"});
+  const {userInfo} = useSelector(state => state)
+  const dispatch = useDispatch()
 
-  const login = 0;
 
   const handleAccountClick = () =>{
     if(active.display === "none"){
@@ -267,6 +271,12 @@ const Navbar = () => {
     } else {
       setActive({display : "none"})
     }
+  }
+
+  const handleLogout = (e) => {
+    e.preventDefault();
+    dispatch(logoutUser())
+
   }
 
   return (
@@ -294,19 +304,19 @@ const Navbar = () => {
               <MyAccount onClick={()=> handleAccountClick()}>
                   <AccountBtn>
                     <Span><CgProfile/></Span>
-                    <Text>My Account</Text>
+                    <Text>{userInfo ? userInfo.name : 'My Account'}</Text>
                   </AccountBtn>
                   
                   <SubMenu style={active} onClick={()=> handleAccountClick()}>
                     <ListOption>
                       <Option>
                         {
-                          login ? 
+                          userInfo ? 
                             <>
                               <OptionLink href='/profile' >
-                                My Account
+                                {userInfo.name}
                               </OptionLink>
-                              <OptionLink href='/logout'>
+                              <OptionLink onClick={handleLogout}>
                                 Logout
                               </OptionLink>
                             </> 
@@ -326,11 +336,11 @@ const Navbar = () => {
               </MyAccount>
 
               {
-                login ? <LinkLogin to="/">
+                userInfo ? <LinkLogin to="/">
                             <Span>
                               <CgLogOut/>
                             </Span>
-                            <Text>Logout</Text>
+                            <Text onClick={handleLogout}>Logout</Text>
                         </LinkLogin>
                       : <LinkLogin to="/login">
                             <Span>

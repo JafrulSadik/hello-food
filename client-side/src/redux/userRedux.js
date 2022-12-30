@@ -1,34 +1,44 @@
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit"
 import axios from 'axios'
 
+// For Register
+
 export const createUser = createAsyncThunk("users/create", async (user) => {
-   try {
     const res = await axios.post(
         'http://localhost:5000/api/signup',
         user
     )
     return res.data;
-   } catch (err) {
-    console.log(err.AxiosError)
-    return err.response
-   }
+})
+
+// For Login
+
+export const loginUser = createAsyncThunk("users/login", async (user) => {
+    const res = await axios.post(
+        'http://localhost:5000/api/login',
+        user
+    )
+    return res.data;
+})
+export const logoutUser = createAsyncThunk("users/logout", async (user) => {
+    const res = await axios.get(
+        'http://localhost:5000/api/logout',
+        user
+    )
+    return res.data;
 })
 
 export const userSlice = createSlice({
     name: 'user',
     initialState: {
-        userInfo: {
-            name : '',
-            email: '',
-            password: '',
-        },
+        userInfo: null,
         pending: null,
         success: false,
         error: null,
-        errorMessage : {}
     },
     reducers: {},
     extraReducers: (builder) => {
+        // Register a user
         builder
         .addCase(createUser.pending, (state) => {
             state.pending = true;
@@ -39,12 +49,37 @@ export const userSlice = createSlice({
             state.pending = false;
             state.success = true;
         })
-        .addCase (createUser.rejected, (state, action) => {
+        .addCase (createUser.rejected, (state) => {
             state.pending = false;
             state.error = true;
             state.success = false;
-            state.errorMessage = action.payload;
-            console.log(action);
+        })
+        // Login a user
+        .addCase(loginUser.pending, (state) => {
+            state.pending = true;
+            state.error = false;
+        })
+        .addCase(loginUser.fulfilled, (state, action) => {
+            state.userInfo = action.payload;
+            state.pending = false;
+            state.success = true;
+        })
+        .addCase (loginUser.rejected, (state) => {
+            state.pending = false;
+            state.error = true;
+            state.success = false;
+        })
+        .addCase (logoutUser.pending, (state) => {
+            state.pending = true;
+            state.error = false;
+        })
+        .addCase (logoutUser.fulfilled, (state) => {
+            state.pending = false;
+            state.userInfo = null;
+        })
+        .addCase (logoutUser.rejected, (state) => {
+            state.pending = false;
+            state.error = true;
         })
     },
 });
