@@ -51,13 +51,13 @@ export const userSlice = createSlice({
             state.pending = true;
         })
         .addCase(createUser.fulfilled, (state, action) => {
+            localStorage.setItem('profile', JSON.stringify({...action.payload}))
             state.userInfo = action.payload;
             state.pending = false;
             state.success = true;
         })
         .addCase (createUser.rejected, (state, action) => {
             state.pending = false;
-            console.log(action.payload.dkfdjk)
             state.error = action.payload
             state.success = false;
         })

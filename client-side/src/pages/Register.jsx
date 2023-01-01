@@ -23,7 +23,10 @@ const Register = () => {
   const [passwordfocused, setPasswordFocused] = useState(false)
   const [confirmpasswordfocused, setConfirmPasswordFocused] = useState(false)
   const dispatch = useDispatch()
-  const {userInfo, pending, error} = useSelector(state => state)
+  // const {userInfo, pending, error} = useSelector(state => console.log(state))
+  const user = useSelector(state => state)
+
+  console.log(user);
 
 
   const handleSubmit = (e) => {
@@ -85,8 +88,9 @@ const Register = () => {
               required
             />
             <span className="confirm_span">Password doesn't match</span>
-            {error && (<p className="error_text">{error}</p>)}
-            {userInfo && <Navigate to='/' replace='true' />}
+            {/* {error && (<p className="error_text">{error}</p>)} */}
+            {/* {console.log(userInfo)} */}
+            {/* {userInfo && <Navigate to='/' replace='true' />} */}
             <button type="submit">Register</button>
             <p>Or Join with</p>
             <div className="icons">
@@ -100,8 +104,8 @@ const Register = () => {
           </form>
         </div>
       </Container>
-      {userInfo && toast('created')}
-      {pending && <Spinner />}
+      {/* {userInfo && toast('created')} */}
+      {/* {pending && <Spinner />} */}
       <MobileMenu />
       <Footer />
     </>
