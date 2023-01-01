@@ -16,6 +16,8 @@ import Sidebar from './admin/components/Sidebar'
 import AdminProducts from "./admin/pages/AdminProducts";
 import Orders from "./admin/pages/Orders";
 import Users from "./admin/pages/Users";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 const App = () => {
   const AdminLayout = ({children}) => (
     <>
@@ -46,7 +48,7 @@ const App = () => {
         <Route path="/users" element={<Users />} />
       </Route>
     </Routes>
-    
+    <ToastContainer />
     </AppContainer>
   );
 };

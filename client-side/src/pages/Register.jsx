@@ -10,6 +10,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { createUser } from "../redux/userRedux";
 import Spinner from "../components/Spinner";
 import { Navigate } from "react-router-dom";
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 const Register = () => {
@@ -26,8 +28,10 @@ const Register = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(createUser({name, email, password}))
+    dispatch(createUser({name, email, password, toast}))
   }
+
+
 
 
 
@@ -81,7 +85,7 @@ const Register = () => {
               required
             />
             <span className="confirm_span">Password doesn't match</span>
-            {error && (<p className="error_text">Email Already Exists</p>)}
+            {error && (<p className="error_text">{error}</p>)}
             {userInfo && <Navigate to='/' replace='true' />}
             <button type="submit">Register</button>
             <p>Or Join with</p>
@@ -96,6 +100,7 @@ const Register = () => {
           </form>
         </div>
       </Container>
+      {userInfo && toast('created')}
       {pending && <Spinner />}
       <MobileMenu />
       <Footer />
