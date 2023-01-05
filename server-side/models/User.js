@@ -26,12 +26,16 @@ const UserSchema = new mongoose.Schema({
     orders: {
         type: Array,
     },
+    cart: {
+        type: Array,
+    },
     isAdmin: {
         type: Boolean,
-        default: 0
+        default: false
     },
-    addToCart:{
-        type: Array
+    status: {
+        type: Boolean,
+        default: true
     }
 }, {timestamps: true}
 );

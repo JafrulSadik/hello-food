@@ -3,6 +3,7 @@ const authRoute = require("./routes/authRoute");
 const { default: mongoose } = require("mongoose");
 const categoryRoute = require("./routes/categoryRoute");
 const productRoute = require("./routes/productRoute");
+const userRoute = require("./routes/userRoute");
 const dotenv = require("dotenv").config();
 const app = express();
 const bcrypt = require('bcrypt');
@@ -33,6 +34,7 @@ app.use(express.json());
 app.use("/api", authRoute);
 app.use("/api/category", categoryRoute)
 app.use("/api/product", productRoute)
+app.use("/api/user", userRoute)
 
 
 app.use((err, req, res, next) => {

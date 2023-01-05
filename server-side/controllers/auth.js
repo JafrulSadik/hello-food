@@ -3,8 +3,9 @@ const jwt = require('jsonwebtoken');
 const createError = require('../error');
 const User = require("../models/User");
 
-const signup = async (req, res, next) =>{
+const signup = async (req, res, login, next) =>{
     try{
+        //Check wheather email is already exist or not
         const verifyEmail = await User.findOne({"email" : req.body.email}).count();
         if(verifyEmail){
             return next(createError(409, "Email already exist!!!"))
@@ -14,9 +15,11 @@ const signup = async (req, res, next) =>{
         const hash = bcrypt.hashSync(req.body.password, salt);
 
         const newUser = new User({...req.body, "password" : hash})
-        await newUser.save();
+        const resValue = await newUser.save();
 
-        res.status(200).send("User has been created!");
+        const {name, email, isAdmin, _id} = resValue;
+
+        res.status(200).send(name, email, isAdmin, _id.toString());
 
     } catch (err){
         next(err);
@@ -24,24 +27,20 @@ const signup = async (req, res, next) =>{
 }
 
 const login = async (req, res, next) => {
-
     try{
         const user = await User.findOne({email: req.body.email});
 
         if(!user){
             return next(createError(404, "User name or Password does not matched."));
         }
-
-
         const isCorrect =  await bcrypt.compare(req.body.password, user.password);
 
         if(!isCorrect){
             return next(createError(404, "User name or Password does not matched."))
-        } 
+        }
 
-        const token = jwt.sign({id:user._id}, process.env.JWT_SECRET)
+        const token = jwt.sign({id:user._id}, process.env.JWT_SECRET, {expiresIn:"10s"})
         const {password, ...others} = user._doc;
-
         res
         .cookie("access_token", token, {
           httpOnly: true,
@@ -64,8 +63,7 @@ const logout = async (req, res, next) => {
         .json("Logout successfully.");   
     } catch (error) {
         next(error)
-    }
-    
+    }   
 }
 
 module.exports = {
