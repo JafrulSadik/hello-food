@@ -2,28 +2,28 @@ import { faFacebookF, faGoogle } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import axios from "axios";
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { Link, Navigate } from "react-router-dom";
 import styled from "styled-components";
 import Footer from "../components/Footer";
 import MobileMenu from "../components/MobileMenu";
 import Navbar from "../components/Navbar";
+import Spinner from "../components/Spinner";
+import { loginUser } from "../redux/userRedux";
 import { mobile } from "../responsive";
 
 const Login = () => {
   const [valid, setValid] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const dispatch = useDispatch()
+  const {pending, error, userInfo } = useSelector(state => state)
+
+
 
   const handleLogin = async (e) => {
     e.preventDefault();
-    try {
-      const res = await axios.post("http://localhost:5000/api/login",
-    {input: email, password : password}
-    )
-    } catch(error) {
-      console.log(error);
-    }
-
+    dispatch(loginUser({email, password}))
   };
 
   return (
@@ -33,7 +33,7 @@ const Login = () => {
         <div className="wrapper">
           <form className="loginForm">
             <h1>Login</h1>
-            <label for="email">Email</label>
+            <label htmlFor="email">Email</label>
             <input
               type="email"
               name="email"
@@ -41,7 +41,7 @@ const Login = () => {
               onChange={(e) => setEmail(e.target.value)}
               required
             />
-            <label for="password">Password</label>
+            <label htmlFor="password">Password</label>
             <input
               type="password"
               name="password"
@@ -49,7 +49,7 @@ const Login = () => {
               onChange={(e) => setPassword(e.target.value)}
               required
             />
-            {valid && <span>Invalid Email or Password!</span>}
+            {error && <span>Invalid Email or Password!</span>}
             <Link className="forgot_password" to="/login">Forgot Password?</Link>
             <button onClick={handleLogin}>Login</button>
             <div className="signup">
@@ -72,6 +72,8 @@ const Login = () => {
           </form>
         </div>
       </Container>
+      {pending && <Spinner />}
+      {userInfo && <Navigate to='/' replace='true' />}
       <MobileMenu />
       <Footer />
     </>

@@ -1,14 +1,15 @@
 import { faFacebookF, faGoogle } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
 import Footer from "../components/Footer";
 import MobileMenu from "../components/MobileMenu";
 import Navbar from "../components/Navbar";
-import Spinner from "../components/Spinner";
-import { createUser } from "../redux/userRedux";
 import { mobile } from "../responsive";
+import { useDispatch, useSelector } from "react-redux";
+import { createUser } from "../redux/userRedux";
+import Spinner from "../components/Spinner";
+import { Navigate } from "react-router-dom";
 
 
 const Register = () => {
@@ -20,7 +21,7 @@ const Register = () => {
   const [passwordfocused, setPasswordFocused] = useState(false)
   const [confirmpasswordfocused, setConfirmPasswordFocused] = useState(false)
   const dispatch = useDispatch()
-  const {success, pending, error} = useSelector(state => state.user)
+  const {userInfo, pending, error} = useSelector(state => state)
 
 
   const handleSubmit = (e) => {
@@ -63,11 +64,11 @@ const Register = () => {
               onBlur={() => setPasswordFocused(true)}
               passwordfocused={passwordfocused.toString()}
               onChange={(e) => setPassword(e.target.value)}
-              pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$"
+              pattern="^.{6,}$"
               placeholder="Password"
               required
             />
-            <span className="password_span">Password should be at least 8 charector</span>
+            <span className="password_span">Password should be at least 6 characters</span>
             <label htmlFor="password">Confirm Password</label>
             <input
               type="password"
@@ -80,6 +81,8 @@ const Register = () => {
               required
             />
             <span className="confirm_span">Password doesn't match</span>
+            {error && (<p className="error_text">Email Already Exists</p>)}
+            {userInfo && <Navigate to='/' replace='true' />}
             <button type="submit">Register</button>
             <p>Or Join with</p>
             <div className="icons">
@@ -173,6 +176,12 @@ const Container = styled.div`
   }
   input:invalid[confirmpasswordfocused='true'] ~ .confirm_span {
     display: block;
+  }
+  .loginForm > .error_text {
+    color: red;
+    display: block;
+    font-size: 14px;
+    font-weight: 400;
   }
   .icons {
     display: flex;
